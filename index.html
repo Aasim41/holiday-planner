@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Holiday Planner | Bespoke Luxury Travel & Curated Itineraries</title>
+    <meta name="description" content="Holiday Planner, founded by Mohd Amiq Ansari, offers bespoke luxury travel experiences, private tours, 5-star resorts, and custom itineraries to over 2,000 global destinations." />
+    <meta name="keywords" content="luxury travel, bespoke travel agency, custom itineraries, luxury resorts, Mohd Amiq Ansari, Holiday Planner, private concierge travel" />
+    <meta name="author" content="Mohd Amiq Ansari" />
+    <meta property="og:title" content="Holiday Planner | Luxury Travel" />
+    <meta property="og:description" content="Discover the world beautifully with fully bespoke, curated luxury itineraries." />
+    <meta property="og:type" content="website" />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=League+Gothic&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <!-- Fullscreen Loader -->
+    <div id="loader" class="loader-container">
+      <div class="loader-content">
+        <h1 class="loader-logo" style="display:flex; flex-direction:column; align-items:center;"><img src="images/logo.png?v=2" alt="Holiday Planner" style="height: 100px; margin-bottom: 20px;"> HOLIDAY PLANNER</h1>
+        <div class="spinner">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <p>Preparing your journey...</p>
+      </div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="header hidden-initial">
+      <div class="nav-container">
+        <a href="index.html" class="logo" style="display:flex; align-items:center;"><img src="images/logo.png?v=2" alt="Holiday Planner" style="height: 50px;"></a>
+        <nav class="wrap nav-animated">
+
+          <input type="radio" name="nav" id="rd-1" class="rd-1" onclick="window.location.href='#destinations'">
+          <label for="rd-1" class="label"><span>Destinations</span></label>
+
+          <input type="radio" name="nav" id="rd-2" class="rd-2" onclick="window.location.href='#services'">
+          <label for="rd-2" class="label"><span>Services</span></label>
+
+          <input type="radio" name="nav" id="rd-process" class="rd-process" onclick="window.location.href='#process'">
+          <label for="rd-process" class="label"><span>Process</span></label>
+
+          <input type="radio" name="nav" id="rd-3" class="rd-3" onclick="window.location.href='#tours'">
+          <label for="rd-3" class="label"><span>Tours</span></label>
+
+          <input type="radio" name="nav" id="rd-4" class="rd-4" onclick="window.location.href='#testimonials'">
+
+          <input type="radio" name="nav" id="rd-about" class="rd-about" onclick="window.location.href='#about'">
+          <label for="rd-4" class="label"><span>Stories</span></label>
+          <label for="rd-about" class="label"><span>About</span></label>
+
+          <div class="slidebar"></div>
+          <div class="bar"></div>
+        </nav>
+        <a href="inquiry.html" class="btn btn-primary nav-btn book-btn" style="text-decoration:none;"><span>Plan Trip</span></a>
+        <button class="menu-toggle" aria-label="Toggle Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero Slideshow -->
+      <section class="mk-hero-slider scroll-reveal">
+                <div class="slides">
+          <div class="slide active">
+            <img src="images/hero_slide_1.png" alt="Luxury Resort">
+          </div>
+          <div class="slide">
+            <img src="images/hero_slide_2.png" alt="Hot Air Balloons">
+          </div>
+          <div class="slide">
+            <img src="images/hero_slide_3.png" alt="Private Dinner">
+          </div>
+          <div class="slide">
+            <img src="images/hero_slide_4.png" alt="Safari Lodge">
+          </div>
+          <div class="slide">
+            <img src="images/hero_slide_5.png" alt="Winter Chalet">
+          </div>
+          <div class="slide">
+            <img src="https://cdn.prod.website-files.com/67daff2a6e8cc98d865cc436/67fe747d19ea79e57f173747_arnaud-steckle-34RmaD-jVbY-unsplash.jpg" alt="Original Hero">
+          </div>
+          <div class="mk-hero-scrim"></div>
+        </div>
+        
+        <div class="mk-hero-content">
+          <span class="mk-hero-pre">THE</span>
+          <h1 class="mk-hero-title">Holiday planner<br><em class="script-font">experience</em></h1>
+        </div>
+        
+        <button class="slide-prev" onclick="changeSlide(-1)">&#10094;</button>
+        <button class="slide-next" onclick="changeSlide(1)">&#10095;</button>
+        
+                <div class="slide-dots">
+          <span class="dot active" onclick="goToSlide(0)"></span>
+          <span class="dot" onclick="goToSlide(1)"></span>
+          <span class="dot" onclick="goToSlide(2)"></span>
+          <span class="dot" onclick="goToSlide(3)"></span>
+          <span class="dot" onclick="goToSlide(4)"></span>
+          <span class="dot" onclick="goToSlide(5)"></span>
+        </div>
+      </section>
+      
+      <!-- Stats Section -->
+      <section class="stats-section scroll-reveal">
+        <div class="stats-container-premium">
+          <div class="stat-item-premium">
+            <div class="stat-icon">✦</div>
+            <h2 class="font-display">16<span class="stat-plus">+</span></h2>
+            <p>Years<br>Experience</p>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item-premium">
+            <div class="stat-icon">✧</div>
+            <h2 class="font-display">2K<span class="stat-plus">+</span></h2>
+            <p>Destinations<br>Available</p>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item-premium">
+            <div class="stat-icon">✦</div>
+            <h2 class="font-display">10K<span class="stat-plus">+</span></h2>
+            <p>Happy<br>Customers</p>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item-premium">
+            <div class="stat-icon">✧</div>
+            <h2 class="font-display">4.8<span class="stat-plus">★</span></h2>
+            <p style="margin-bottom: 5px;">Overall<br>Rating</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Services Section -->
+      <section id="services" class="section services-section bg-pink">
+        <div class="section-header scroll-reveal">
+          <div class="section-title-wrap">
+            <h2 class="section-title">Our Premium Services</h2>
+            <p>We provide end-to-end travel solutions to ensure a seamless and unforgettable journey.</p>
+          </div>
+        </div>
+        
+        <div class="services-grid">
+          <!-- Service: Flights -->
+          <a href="service?type=flights" class="service-parent-3d scroll-reveal" style="--card-color: rgba(4, 193, 250, 0.85);">
+            <div class="service-card-3d">
+              <div class="service-content-box">
+                <h3 class="card-title">Flight Tickets</h3>
+                <div class="card-content">
+                  <p style="margin-bottom: 8px;">Access exclusive deals and seamless booking for global airlines.</p>
+                  <ul style="text-align: left; padding-left: 15px; font-size: 13px; list-style-type: '✓ ';">
+                    <li>24/7 Dedicated Support</li>
+                    <li>Price Match Guarantee</li>
+                    <li>Flexible Cancellations</li>
+                  </ul>
+                </div>
+                <span class="see-more">Learn More →</span>
+              </div>
+              <div class="service-icon-box">✈️</div>
+            </div>
+          </a>
+          <!-- Service: Cruises -->
+          <a href="service?type=cruises" class="service-parent-3d scroll-reveal delay-1" style="--card-color: rgba(255, 75, 75, 0.85);">
+            <div class="service-card-3d">
+              <div class="service-content-box">
+                <h3 class="card-title">Cruise Packages</h3>
+                <div class="card-content">
+                  <p style="margin-bottom: 8px;">Sail the seas in luxury with our curated international cruise trips.</p>
+                  <ul style="text-align: left; padding-left: 15px; font-size: 13px; list-style-type: '✓ ';">
+                    <li>All-Inclusive Packages</li>
+                    <li>Ocean-View Cabins</li>
+                    <li>Onboard Entertainment</li>
+                  </ul>
+                </div>
+                <span class="see-more">Learn More →</span>
+              </div>
+              <div class="service-icon-box">🚢</div>
+            </div>
+          </a>
+          <!-- Service: Hotels -->
+          <a href="service?type=hotels" class="service-parent-3d scroll-reveal delay-2" style="--card-color: rgba(0, 210, 128, 0.85);">
+            <div class="service-card-3d">
+              <div class="service-content-box">
+                <h3 class="card-title">Hotel Booking</h3>
+                <div class="card-content">
+                  <p style="margin-bottom: 8px;">From budget stays to 5-star luxury resorts worldwide.</p>
+                  <ul style="text-align: left; padding-left: 15px; font-size: 13px; list-style-type: '✓ ';">
+                    <li>Free Breakfast Included</li>
+                    <li>VIP Room Upgrades</li>
+                    <li>Zero Hidden Fees</li>
+                  </ul>
+                </div>
+                <span class="see-more">Learn More →</span>
+              </div>
+              <div class="service-icon-box">🏨</div>
+            </div>
+          </a>
+          <!-- Service: Tours -->
+          <a href="service?type=tours" class="service-parent-3d scroll-reveal delay-3" style="--card-color: rgba(255, 153, 0, 0.85);">
+            <div class="service-card-3d">
+              <div class="service-content-box">
+                <h3 class="card-title">Tour Packages</h3>
+                <div class="card-content">
+                  <p style="margin-bottom: 8px;">Expert-led guided tours tailored to your travel interests.</p>
+                  <ul style="text-align: left; padding-left: 15px; font-size: 13px; list-style-type: '✓ ';">
+                    <li>Local English Guides</li>
+                    <li>Skip-the-Line Entry</li>
+                    <li>Custom Itineraries</li>
+                  </ul>
+                </div>
+                <span class="see-more">Learn More →</span>
+              </div>
+              <div class="service-icon-box">🗺️</div>
+            </div>
+          </a>
+          <!-- Service: Visa -->
+          <a href="service?type=visa" class="service-parent-3d scroll-reveal delay-4" style="--card-color: rgba(157, 0, 255, 0.85);">
+            <div class="service-card-3d">
+              <div class="service-content-box">
+                <h3 class="card-title">Visa Assistance</h3>
+                <div class="card-content">
+                  <p style="margin-bottom: 8px;">Navigate international travel with fast, reliable visa processing.</p>
+                  <ul style="text-align: left; padding-left: 15px; font-size: 13px; list-style-type: '✓ ';">
+                    <li>Document Verification</li>
+                    <li>High Success Rate</li>
+                    <li>Expedited Service</li>
+                  </ul>
+                </div>
+                <span class="see-more">Learn More →</span>
+              </div>
+              <div class="service-icon-box">🛂</div>
+            </div>
+          </a>
+          <!-- Service: Insurance -->
+          <a href="service?type=insurance" class="service-parent-3d scroll-reveal delay-3" style="--card-color: rgba(180, 80, 250, 0.85);">
+            <div class="service-card-3d">
+              <div class="service-content-box">
+                <h3 class="card-title">Travel Insurance</h3>
+                <div class="card-content">
+                  <p style="margin-bottom: 8px;">Comprehensive coverage for a worry-free luxury travel experience.</p>
+                  <ul style="text-align: left; padding-left: 15px; font-size: 13px; list-style-type: '✔️ ';">
+                    <li>Medical & Evacuation</li>
+                    <li>Trip Cancellation</li>
+                    <li>24/7 Global Assistance</li>
+                  </ul>
+                </div>
+                <span class="see-more">Learn More ➔</span>
+              </div>
+              <div class="service-icon-box">🛡️</div>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <!-- Process Section -->
+      <div id="process">
+<!-- Phase 1 & 2 -->
+      <section class="image-split-row scroll-reveal">
+        <div class="image-split-media">
+          <img src="images/kerala.png" alt="Kerala Backwaters">
+        </div>
+        <div class="image-split-text">
+          <span class="uppercase-text">PHASE 1 & 2</span>
+          <h2>Consult & Curate</h2>
+          <p>We begin by getting to know you—your style, your curiosities, and the places calling your name. Then, we carefully craft a tailored itinerary that blends thoughtful structure with a few delightful surprises. The kind of trip that feels like it was made just for you—because it was.</p>
+        </div>
+      </section>
+
+      <!-- Phase 3 & 4 (Reversed) -->
+      <section class="image-split-row reverse scroll-reveal">
+        <div class="image-split-media">
+          <img src="images/jaipur.png" alt="Jaipur Palace">
+        </div>
+        <div class="image-split-text">
+          <span class="uppercase-text">PHASE 3 & 4</span>
+          <h2>Confirm & Connect</h2>
+          <p>With your trip finalized, our work continues behind the scenes. We stay closely connected to you and to our trusted partners, ensuring every detail is aligned. It’s part of our commitment to making the lead-up as memorable as the journey itself.</p>
+        </div>
+      </section>
+
+      <!-- Phase 5 & 6 -->
+      <section class="image-split-row scroll-reveal">
+        <div class="image-split-media">
+          <img src="images/goa.png" alt="Goa Beaches">
+        </div>
+        <div class="image-split-text">
+          <span class="uppercase-text">PHASE 5 & 6</span>
+          <h2>Commence & Capture</h2>
+          <p>You’re off! With everything in place, all that’s left is to enjoy the journey. When you return, we’ll reconnect to gather stories, favorite moments, and inspiration for wherever your passport (and imagination) might take you next.</p>
+          <div style="margin-top: 30px;">
+            <button class="btn btn-outline book-btn"><span>Let's Begin</span></button>
+          </div>
+        </div>
+      </section>
+</div>
+
+      <!-- Removed duplicate old destinations section -->
+
+      <!-- Tours Section -->
+      <section id="tours" class="section tours bg-yellow">
+        <div class="tours-header scroll-reveal">
+          <h2 class="section-title">Our Tours For</h2>
+        </div>
+        <div class="glass-tours-container scroll-reveal delay-1">
+          <a href="destinations.html?filter=friends" class="glass" data-text="Friends" style="--r:-15;">
+            <img src="https://images.unsplash.com/photo-1501504905252-473c47e087f8?q=80&w=1974&auto=format&fit=crop" alt="Friends" style="width:100%; height:100%; object-fit:cover; border-radius:15px; position:absolute; top:0; left:0; z-index:-1;">
+          </a>
+          <a href="destinations.html?filter=families" class="glass" data-text="Families" style="--r:5;">
+            <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?q=80&w=2070&auto=format&fit=crop" alt="Families" style="width:100%; height:100%; object-fit:cover; border-radius:15px; position:absolute; top:0; left:0; z-index:-1;">
+          </a>
+          <a href="destinations.html?filter=solo" class="glass" data-text="Solo" style="--r:25;">
+            <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=2021&auto=format&fit=crop" alt="Solo" style="width:100%; height:100%; object-fit:cover; border-radius:15px; position:absolute; top:0; left:0; z-index:-1;">
+          </a>
+        </div>
+      </section>
+
+      <!-- Testimonials -->
+      <section id="testimonials" class="section testimonials bg-blue">
+        <h2 class="section-title text-center scroll-reveal">What people say about us</h2>
+        <div class="test-grid">
+          <!-- Testimonial 1 -->
+          <div class="test-card scroll-reveal">
+            <div class="quote-icon">"</div>
+            <p class="test-text">An unforgettable experience! The seamless booking process and well-curated packages made my trip stress-free.</p>
+            <div class="test-author">
+              <img src="https://randomuser.me/api/portraits/men/44.jpg" alt="Anas Ansari" class="author-img">
+              <div>
+                <h4>Anas Ansari</h4>
+                <span>Scientist in Chicago</span>
+              </div>
+            </div>
+          </div>
+          <!-- Testimonial 2 -->
+          <div class="test-card scroll-reveal delay-1">
+            <div class="quote-icon">"</div>
+            <p class="test-text">The personalized recommendations and top-notch accommodations exceeded my expectations. Highly recommended!</p>
+            <div class="test-author">
+              <img src="https://randomuser.me/api/portraits/men/68.jpg" alt="Aftab Alam" class="author-img">
+              <div>
+                <h4>Aftab Alam</h4>
+                <span>Doctor</span>
+              </div>
+            </div>
+          </div>
+          <!-- Testimonial 3 -->
+          <div class="test-card scroll-reveal delay-2">
+            <div class="quote-icon">"</div>
+            <p class="test-text">Holiday Planner exceeded my expectations. Every detail of my vacation was perfectly planned. I can't wait to travel with them again.</p>
+            <div class="test-author">
+              <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Abhinav Singh" class="author-img">
+              <div>
+                <h4>Abhinav Singh</h4>
+                <span>Businessman</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Our Office / Map Section -->
+      <section id="office" class="section office-section">
+        <div class="section-header scroll-reveal text-center mx-auto" style="justify-content: center; text-align: center;">
+          <div class="section-title-wrap text-center">
+            <h2 class="section-title text-center">Visit Our Office</h2>
+            <p class="mx-auto">Drop by for an in-person consultation at our headquarters in Prayagraj.</p>
+          </div>
+        </div>
+        
+        <div class="map-container scroll-reveal delay-1">
+          <iframe 
+            src="https://maps.google.com/maps?q=30%2F9%2F7D%2C%20P.%20D.%20Tandon%20Road%2C%20Civil%20Lines%2C%20Allahabad-211001&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+            width="100%" 
+            height="450" 
+            style="border:0; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+          <div class="office-address-box">
+            <h3>Holiday Planner Headquarters</h3>
+            <p>30/9/7D, P. D. Tandon Road, Civil Lines<br>(Opp. Dhobi Ghat, Petrol Pump Crossing)<br>Allahabad-211001</p>
+            <p style="margin-top: 10px;"><strong>Timings:</strong><br>Mon-Sat: 10:00 AM - 7:00 PM<br>Sunday: Closed</p>
+          </div>
+        </div>
+      </section>
+    
+      <!-- About Us Section -->
+      <section id="about" class="section bg-white scroll-reveal" style="padding: 100px 0;">
+        <div class="wrap">
+            <div class="section-header scroll-reveal text-center mx-auto" style="justify-content: center; text-align: center; margin-bottom: 60px;">
+              <h2 class="section-title text-center">Meet Your Curator</h2>
+            </div>
+            <div class="about-grid">
+                <div class="about-image scroll-reveal">
+                    <img src="images/owner.jpg" alt="Mohd Amiq Ansari" style="width: 100%; height: auto; display: block; object-fit: cover;">
+                </div>
+                <div class="about-text scroll-reveal" style="font-size: 1.1rem; line-height: 1.8; color: var(--text-color);">
+                  <p style="margin-bottom: 20px;">
+                    At Holiday Planner, we believe that travel is more than just visiting a destination—it's about experiencing the world in a way that resonates with your soul. I founded this agency with a simple dedication: to craft bespoke, unforgettable journeys tailored entirely to your unique preferences.
+                  </p>
+                  <p style="margin-bottom: 20px;">
+                    With over 16 years of expertise and a network spanning over 2,000 destinations, we take absolute pride in our meticulous attention to detail. From the moment you begin planning with us to the moment you return home, our concierge team ensures every aspect of your trip is seamless, luxurious, and uniquely yours.
+                  </p>
+                  <p style="margin-bottom: 30px;">
+                    Whether it's a private sunset dinner in the Maldives or an immersive cultural tour through the streets of Kyoto, we turn your dream vacations into vivid realities. Let me show you the world, beautifully.
+                  </p>
+                  <div class="signature" style="margin-top: 40px;">
+                      <p style="font-family: 'Antonio', sans-serif; font-size: 3.5rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-color); margin-bottom: 5px; line-height: 1;">Mohd Amiq Ansari</p>
+                      <p style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; color: #888;">Founder & Head Curator</p>
+                  </div>
+                </div>
+            </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer scroll-reveal">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <h2 class="logo" style="display:flex; align-items:center; gap: 10px;"><img src="images/logo.png?v=2" alt="Holiday Planner" style="height: 60px;"> HOLIDAY PLANNER</h2>
+          <p>Curating exceptional travel experiences worldwide. Discover, explore, and create unforgettable memories.</p>
+        </div>
+        <div class="footer-links">
+          <div class="link-col">
+            <h4>Company</h4>
+            <a href="#about">About Us</a>
+            <a href="#testimonials">Press</a>
+          </div>
+          <div class="link-col">
+            <h4>Contact Us</h4>
+            <a href="tel:+919454838266">+91 9454838266</a>
+            <a href="mailto:holidayplanner2010@gmail.com">holidayplanner2010@gmail.com</a>
+            <p>30/9/7D, P. D. Tandon Road, Civil Lines<br>(Opp. Dhobi Ghat, Petrol Pump Crossing)<br>Allahabad-211001</p>
+            <p style="margin-top: 10px;"><strong>Timings:</strong><br>Mon-Sat: 10:00 AM - 7:00 PM<br>Sunday: Closed</p>
+          </div>
+          <div class="link-col">
+            <h4>Services</h4>
+            <a href="service?type=flights">Flight Tickets</a>
+            <a href="service?type=cruises">Cruise Packages</a>
+            <a href="service?type=hotels">Hotel Booking</a>
+            <a href="service?type=tours">Tour Packages</a>
+            <a href="destinations.html">All Destinations</a>
+          </div>
+        </div>
+        <div class="footer-newsletter">
+          <h4>Get Updates</h4>
+          <form id="newsletterForm" class="newsletter-form" data-web3forms>
+            <input type="hidden" name="access_key" value="fe41ed18-9e76-4409-8ced-a5df4c73065f">
+            <input type="email" name="email" placeholder="Your email address..." required>
+            <button type="submit" class="btn btn-primary"><span>Subscribe</span></button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Holiday Planner. All Rights Reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Services</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Inquiry Modal (Consultation) -->
+    <div id="inquiryModal" class="modal-overlay">
+      <div class="modal-content">
+        <button class="modal-close">&times;</button>
+        <h2 class="modal-title">Plan Your Dream Trip</h2>
+        <p class="modal-desc">Tell us a bit about what you're looking for, and our expert agents will craft the perfect itinerary for you.</p>
+        <form id="inquiryForm" class="modal-form" data-web3forms>
+          <input type="hidden" name="access_key" value="fe41ed18-9e76-4409-8ced-a5df4c73065f">
+          <input type="text" name="name" placeholder="Your Name" required class="form-input" style="margin-bottom: 15px;">
+          <input type="email" name="email" placeholder="Your Email" required class="form-input" style="margin-bottom: 15px;">
+          <div class="form-row">
+            <input type="date" name="travel_date" class="form-input" required title="Travel Date">
+            <select name="budget" class="form-input" required>
+              <option value="" disabled selected>Select Budget</option>
+              <option value="economy">Economy (&lt; ₹2,00,000)</option>
+              <option value="standard">Standard (₹2,00,000 - ₹5,00,000)</option>
+              <option value="premium">Premium (₹5,00,000 - ₹10,00,000)</option>
+              <option value="luxury">Luxury (₹10,00,000+)</option>
+            </select>
+          </div>
+          <div class="form-group" style="margin-top: 15px;">
+             <label style="font-size: 0.9rem;">Are the dates fixed or flexible? *</label>
+             <div style="display: flex; gap: 15px; margin-top: 5px;">
+               <label><input type="radio" name="flexible" value="Fixed" required> Fixed</label>
+               <label><input type="radio" name="flexible" value="Flexible" required> Flexible</label>
+             </div>
+          </div>
+          <input type="tel" name="phone" placeholder="Phone Number" class="form-input" style="margin-bottom: 15px; margin-top: 15px;">
+          <textarea name="message" placeholder="Tell us about your dream destination or any special requests..." rows="4" required class="form-input" style="margin-bottom: 15px;"></textarea>
+          <button type="submit" class="btn btn-primary w-100"><span>Request Consultation</span></button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+      <span class="toast-icon">✓</span>
+      <span class="toast-message">Action successful!</span>
+    </div>
+
+    <script type="module" src="./main.js"></script>
+  
+    <script>
+      let currentSlide = 0;
+      let slideInterval;
+      
+      function showSlide(index) {
+        const slides = document.querySelectorAll('.mk-hero-slider .slide');
+        const dots = document.querySelectorAll('.mk-hero-slider .dot');
+        if(!slides.length) return;
+        
+        slides.forEach(s => s.classList.remove('active'));
+        dots.forEach(d => d.classList.remove('active'));
+        
+        if (index >= slides.length) currentSlide = 0;
+        else if (index < 0) currentSlide = slides.length - 1;
+        else currentSlide = index;
+        
+        slides[currentSlide].classList.add('active');
+        dots[currentSlide].classList.add('active');
+      }
+      
+      function changeSlide(dir) {
+        showSlide(currentSlide + dir);
+        resetInterval();
+      }
+      
+      function goToSlide(index) {
+        showSlide(index);
+        resetInterval();
+      }
+      
+      function resetInterval() {
+        clearInterval(slideInterval);
+        slideInterval = setInterval(() => {
+          changeSlide(1);
+        }, 5000);
+      }
+      
+      document.addEventListener("DOMContentLoaded", () => {
+         resetInterval();
+      });
+    </script>
+</body>
+</html>

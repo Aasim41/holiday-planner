@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Plan Your Trip | Holiday Planner</title>
+    <meta name="description" content="Start planning your dream bespoke luxury vacation with Holiday Planner's curated inquiry form." />
+    <meta name="keywords" content="plan luxury trip, travel inquiry, bespoke travel consultation" />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=League+Gothic&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <!-- Fullscreen Loader -->
+    <div id="loader" class="loader-container">
+      <div class="loader-content">
+        <h1 class="loader-logo" style="display:flex; flex-direction:column; align-items:center;"><img src="images/logo.png" alt="Holiday Planner" style="height: 100px; margin-bottom: 20px;"> HOLIDAY PLANNER</h1>
+        <div class="spinner">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <p>Preparing your journey...</p>
+      </div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="header hidden-initial">
+      <div class="nav-container">
+        <a href="index.html" class="logo" style="display:flex; align-items:center;"><img src="images/logo.png" alt="Holiday Planner" style="height: 50px;"></a>
+        <nav class="wrap nav-animated">
+
+          <input type="radio" name="nav" id="rd-1" class="rd-1" onclick="window.location.href='#destinations'">
+          <label for="rd-1" class="label"><span>Destinations</span></label>
+
+          <input type="radio" name="nav" id="rd-2" class="rd-2" onclick="window.location.href='#services'">
+          <label for="rd-2" class="label"><span>Services</span></label>
+
+          <input type="radio" name="nav" id="rd-process" class="rd-process" onclick="window.location.href='#process'">
+          <label for="rd-process" class="label"><span>Process</span></label>
+
+          <input type="radio" name="nav" id="rd-3" class="rd-3" onclick="window.location.href='#tours'">
+          <label for="rd-3" class="label"><span>Tours</span></label>
+
+          <input type="radio" name="nav" id="rd-4" class="rd-4" onclick="window.location.href='#testimonials'">
+          <label for="rd-4" class="label"><span>Stories</span></label>
+
+          <div class="slidebar"></div>
+          <div class="bar"></div>
+        </nav>
+        <button class="btn btn-primary nav-btn book-btn"><span>Plan Trip</span></button>
+        <button class="menu-toggle" aria-label="Toggle Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </header>
+    <main>
+      <!-- Inquiry section -->
+      <section class="inquiry-section scroll-reveal" style="padding-top: 150px; padding-bottom: 80px;">
+        <div class="wrap">
+          <div class="inquiry-grid">
+            
+            <div class="inquiry-left">
+              <h3 class="font-display">Let's get started</h3>
+              <p>Fill out our form to start planning your perfect getaway.</p>
+              <div class="inquiry-img-wrapper" style="margin-top: 30px;">
+                <img src="images/hot_air_balloons.png" alt="Get Started" style="width: 100%; border-radius: 8px; object-fit: cover; aspect-ratio: 4/5;">
+              </div>
+            </div>
+
+            <div class="inquiry-right">
+              <div class="inquiry-form-container">
+                <h1 class="font-display" style="font-size: 2.5rem; margin-bottom: 10px;">Travel Inquiry</h1>
+                <p style="margin-bottom: 40px; color: var(--text-color);">Please fill out the following form to provide more information about your request.</p>
+                
+                <form class="mk-form" action="#" method="POST">
+                  
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="firstName">First Name *</label>
+                      <input type="text" id="firstName" name="firstName" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="lastName">Last Name *</label>
+                      <input type="text" id="lastName" name="lastName" required>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="preferredName">Preferred Name *</label>
+                    <input type="text" id="preferredName" name="preferredName" required>
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="email">Email *</label>
+                      <input type="email" id="email" name="email" placeholder="example@example.com" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="phone">Phone Number *</label>
+                      <input type="tel" id="phone" name="phone" placeholder="(000) 000-0000" required>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="destination">Where would you like to plan your next trip? *</label>
+                    <input type="text" id="destination" name="destination" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="addInfo">Please provide additional information about your desired destination:</label>
+                    <textarea id="addInfo" name="addInfo" rows="4"></textarea>
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="travelDate">Preferred travel start date? *</label>
+                      <input type="date" id="travelDate" name="travelDate" required>
+                    </div>
+                    <div class="form-group">
+                      <label>Are the dates fixed or flexible? *</label>
+                      <div class="radio-group">
+                        <label><input type="radio" name="flexible" value="Fixed" required> Fixed</label>
+                        <label><input type="radio" name="flexible" value="Flexible" required> Flexible</label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="nights">How many nights? *</label>
+                      <input type="number" id="nights" name="nights" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="travelers">How many travelers? * <small>(Please include yourself)</small></label>
+                      <input type="number" id="travelers" name="travelers" required>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="departure">What is your departure city?</label>
+                    <input type="text" id="departure" name="departure">
+                  </div>
+
+                  <div class="form-group">
+                    <label>What is your budget for all travelers, EXCLUDING flights? *</label>
+                    <p class="form-desc" style="font-size: 0.85rem; color: #666; margin-bottom: 10px;">
+                      Holiday Planner designs customized itineraries including five-star hotels & resorts, immersive experiences with private guides, private transportation, and all concierge services. This means we typically work with budgets of ₹50,000 - ₹1,00,000+ per person, per trip. This range provides us with a starting point & can be discussed or changed later.
+                    </p>
+                    <div class="radio-stack">
+                      <label><input type="radio" name="budget" value="2L or less" required> ₹2,00,000 or less</label>
+                      <label><input type="radio" name="budget" value="2L-5L" required> ₹2,00,000 - ₹5,00,000</label>
+                      <label><input type="radio" name="budget" value="5L-10L" required> ₹5,00,000 - ₹10,00,000</label>
+                      <label><input type="radio" name="budget" value="10L-20L" required> ₹10,00,000 - ₹20,00,000</label>
+                      <label><input type="radio" name="budget" value="20L-30L" required> ₹20,00,000 - ₹30,00,000</label>
+                      <label><input type="radio" name="budget" value="30L+" required> ₹30,00,000+</label>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="occasion">Are you celebrating a special occasion? If so, please advise * <small>(If not, write N/A)</small></label>
+                    <input type="text" id="occasion" name="occasion" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="favoriteTrips">What have been some of your favorite trips and/or hotels and why? *</label>
+                    <textarea id="favoriteTrips" name="favoriteTrips" rows="4" required></textarea>
+                  </div>
+
+                  <div class="form-group">
+                    <label>How did you hear about Martha King Travel? *</label>
+                    <div class="radio-stack">
+                      <label><input type="radio" name="source" value="Friend" required> Friend/Referral</label>
+                      <label><input type="radio" name="source" value="TravelLeisure" required> Travel + Leisure</label>
+                      <label><input type="radio" name="source" value="CondeNast" required> Condé Nast Traveler</label>
+                      <label><input type="radio" name="source" value="SocialMedia" required> Social Media</label>
+                      <label><input type="radio" name="source" value="Virtuoso" required> Virtuoso</label>
+                      <label><input type="radio" name="source" value="Search" required> Internet Search</label>
+                      <label><input type="radio" name="source" value="Other" required> Other</label>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="travelStyle">What else would you like us to know about your travel style & travel needs?</label>
+                    <textarea id="travelStyle" name="travelStyle" rows="4"></textarea>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="passports">All passports for everyone traveling are up to date and will not expire less than 6 months after the travel departure date. *</label>
+                    <select id="passports" name="passports" required>
+                      <option value="">Please Select</option>
+                      <option value="Yes">Yes, all passports are up to date.</option>
+                      <option value="No">No, some or all passports need to be renewed.</option>
+                      <option value="NA">Not Applicable (Domestic Travel Only)</option>
+                    </select>
+                  </div>
+
+                  <button type="submit" class="btn btn-primary" style="width: 100%; padding: 15px; font-size: 1.1rem; border-radius: 4px; margin-top: 20px;">Submit Inquiry</button>
+
+                </form>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+    </main>
+<footer id="contact" class="footer scroll-reveal">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <h2 class="logo" style="display:flex; align-items:center; gap: 10px;"><img src="images/logo.png" alt="Holiday Planner" style="height: 60px;"> HOLIDAY PLANNER</h2>
+          <p>Curating exceptional travel experiences worldwide. Discover, explore, and create unforgettable memories.</p>
+        </div>
+        <div class="footer-links">
+          <div class="link-col">
+            <h4>Company</h4>
+            <a href="#about">About Us</a>
+            <a href="#testimonials">Press</a>
+          </div>
+          <div class="link-col">
+            <h4>Contact Us</h4>
+            <a href="tel:+919454838266">+91 9454838266</a>
+            <a href="mailto:holidayplanner2010@gmail.com">holidayplanner2010@gmail.com</a>
+            <p>30/9/7D, P. D. Tandon Road, Civil Lines<br>(Opp. Dhobi Ghat, Petrol Pump Crossing)<br>Allahabad-211001</p>
+            <p style="margin-top: 10px;"><strong>Timings:</strong><br>Mon-Sat: 10:00 AM - 7:00 PM<br>Sunday: Closed</p>
+          </div>
+          <div class="link-col">
+            <h4>Services</h4>
+            <a href="service.html?type=flights">Flight Tickets</a>
+            <a href="service.html?type=cruises">Cruise Packages</a>
+            <a href="service.html?type=hotels">Hotel Booking</a>
+            <a href="service.html?type=tours">Guided Tours</a>
+            <a href="destinations.html">All Destinations</a>
+          </div>
+        </div>
+        <div class="footer-newsletter">
+          <h4>Get Updates</h4>
+          <form id="newsletterForm" class="newsletter-form">
+            <input type="email" placeholder="Your email address..." required>
+            <button type="submit" class="btn btn-primary"><span>Subscribe</span></button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Holiday Planner. All Rights Reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Services</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Inquiry Modal (Consultation) -->
+    <div id="inquiryModal" class="modal-overlay">
+      <div class="modal-content">
+        <button class="modal-close">&times;</button>
+        <h2 class="modal-title">Plan Your Dream Trip</h2>
+        <p class="modal-desc">Tell us a bit about what you're looking for, and our expert agents will craft the perfect itinerary for you.</p>
+        <form id="inquiryForm" class="modal-form">
+          <input type="text" placeholder="Your Name" required class="form-input" style="margin-bottom: 15px;">
+          <input type="email" placeholder="Your Email" required class="form-input" style="margin-bottom: 15px;">
+          <div class="form-row">
+            <input type="date" class="form-input" required title="Travel Date">
+            <select class="form-input" required>
+              <option value="" disabled selected>Select Budget</option>
+              <option value="economy">Economy (&lt; $1,000)</option>
+              <option value="standard">Standard ($1,000 - $3,000)</option>
+              <option value="premium">Premium ($3,000 - $5,000)</option>
+              <option value="luxury">Luxury ($5,000+)</option>
+            </select>
+          </div>
+          <input type="tel" placeholder="Phone Number" class="form-input" style="margin-bottom: 15px; margin-top: 15px;">
+          <textarea placeholder="Tell us about your dream destination or any special requests..." rows="4" required class="form-input" style="margin-bottom: 15px;"></textarea>
+          <button type="submit" class="btn btn-primary w-100"><span>Request Consultation</span></button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+      <span class="toast-icon">✓</span>
+      <span class="toast-message">Action successful!</span>
+    </div>
+
+    <script type="module" src="./main.js"></script>
+  
+    <script>
+      let currentSlide = 0;
+      let slideInterval;
+      
+      function showSlide(index) {
+        const slides = document.querySelectorAll('.mk-hero-slider .slide');
+        const dots = document.querySelectorAll('.mk-hero-slider .dot');
+        if(!slides.length) return;
+        
+        slides.forEach(s => s.classList.remove('active'));
+        dots.forEach(d => d.classList.remove('active'));
+        
+        if (index >= slides.length) currentSlide = 0;
+        else if (index < 0) currentSlide = slides.length - 1;
+        else currentSlide = index;
+        
+        slides[currentSlide].classList.add('active');
+        dots[currentSlide].classList.add('active');
+      }
+      
+      function changeSlide(dir) {
+        showSlide(currentSlide + dir);
+        resetInterval();
+      }
+      
+      function goToSlide(index) {
+        showSlide(index);
+        resetInterval();
+      }
+      
+      function resetInterval() {
+        clearInterval(slideInterval);
+        slideInterval = setInterval(() => {
+          changeSlide(1);
+        }, 5000);
+      }
+      
+      document.addEventListener("DOMContentLoaded", () => {
+         resetInterval();
+      });
+    </script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Services - Holiday Planner</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=League+Gothic&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body class="inner-page">
+    <header class="header scrolled">
+      <div class="nav-container">
+        <a href="index.html" class="logo" style="display:flex; align-items:center;"><img src="/images/logo.png" alt="Holiday Planner" style="height: 50px;"></a>
+        <nav class="nav-links">
+          <a href="index.html#destinations" class="nav-item">Destinations</a>
+          <a href="index.html#services" class="nav-item active">Services</a>
+          <a href="index.html#process" class="nav-item">Process</a>
+        </nav>
+        <button class="btn btn-primary nav-btn book-btn">Plan Trip</button>
+        <button class="menu-toggle" aria-label="Toggle Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <main class="page-content">
+      <section class="section text-center" style="padding-bottom: 40px;">
+        <div class="service-hero" style="width: 100%; height: 300px; overflow: hidden; margin-bottom: 30px; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); display: none;" id="srvHeroContainer">
+          <img src="" id="srvHero" alt="Service Hero" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div class="service-icon-large" id="srvIcon">🌟</div>
+        <h1 class="page-title" id="srvTitle">Loading Service...</h1>
+        <p class="page-desc mx-auto" id="srvDesc">Fetching service details...</p>
+      </section>
+
+      <section class="section" style="padding-top: 0;">
+        <div class="service-details-box">
+          <div class="service-perks" id="srvPerks">
+            <!-- Populated via JS -->
+          </div>
+          
+          <div class="booking-widget" style="margin-top: 40px; text-align: center;">
+            <h3>Ready to get started?</h3>
+            <p>Our experts are here to assist you every step of the way.</p>
+            <form id="dynamicServiceForm" class="web3-dynamic-form" data-web3forms style="margin-top: 20px; max-width: 300px; margin-left: auto; margin-right: auto;">
+              <input type="hidden" name="access_key" value="fe41ed18-9e76-4409-8ced-a5df4c73065f">
+              <input type="hidden" name="subject" value="New Service Booking Request">
+              <div id="dynamicFormFields">
+                <!-- Populated via JS -->
+              </div>
+              <button type="submit" class="btn btn-primary book-btn" style="margin-top: 20px; width: 100%;">Request This Service</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Inquiry Modal -->
+    <div id="inquiryModal" class="modal-overlay">
+      <div class="modal-content">
+        <button class="modal-close">&times;</button>
+        <h2 class="modal-title">Service Inquiry</h2>
+        <form id="inquiryForm" class="modal-form">
+          <input type="text" placeholder="Your Name" required class="form-input" style="margin-bottom: 15px;">
+          <input type="email" placeholder="Your Email" required class="form-input" style="margin-bottom: 15px;">
+          <div class="form-row">
+            <input type="date" class="form-input" required title="Travel Date">
+            <select class="form-input" required>
+              <option value="" disabled selected>Select Budget</option>
+              <option value="economy">Economy (&lt; ₹80,000)</option>
+              <option value="standard">Standard (₹80,000 - ₹2,40,000)</option>
+              <option value="premium">Premium (₹2,40,000 - ₹4,00,000)</option>
+              <option value="luxury">Luxury (₹4,00,000+)</option>
+            </select>
+          </div>
+          <input type="tel" placeholder="Phone Number" class="form-input" style="margin-bottom: 15px; margin-top: 15px;">
+          <textarea id="inquiryText" placeholder="How can we help you with this service?" rows="4" required class="form-input" style="margin-bottom: 15px;"></textarea>
+          <button type="submit" class="btn btn-primary w-100">Send Request</button>
+        </form>
+      </div>
+    </div>
+    
+    <div id="toast" class="toast"><span class="toast-icon">✓</span><span class="toast-message">Success!</span></div>
+
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>

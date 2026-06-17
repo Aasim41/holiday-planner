@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Destinations - Holiday Planner</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=League+Gothic&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body class="inner-page">
+    <!-- Header Navigation -->
+    <header class="header scrolled">
+      <div class="nav-container">
+        <a href="index.html" class="logo" style="display:flex; align-items:center;"><img src="/images/logo.png" alt="Holiday Planner" style="height: 50px;"></a>
+        <nav class="nav-links">
+          <a href="index.html#destinations" class="nav-item active">Destinations</a>
+          <a href="index.html#destinations" class="nav-item active">Destinations</a>
+          <a href="index.html#services" class="nav-item">Services</a>
+          <a href="index.html#tours" class="nav-item">Tours</a>
+          <a href="index.html#testimonials" class="nav-item">Stories</a>
+        </nav>
+        <button class="btn btn-primary nav-btn book-btn">Plan Trip</button>
+        <button class="menu-toggle" aria-label="Toggle Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </header>
+
+    <main class="page-content">
+      <section class="section text-center">
+        <h1 class="page-title" id="allDestinationsHeader">Explore The World</h1>
+        <p class="page-desc">From vibrant cities to tranquil beaches, explore our comprehensive list of breathtaking destinations carefully curated just for you.</p>
+        
+        <div class="dest-grid" id="allDestinationsGrid" style="margin-top: 60px;">
+          <!-- Content populated via main.js -->
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <h2 class="logo" style="display:flex; align-items:center; gap: 10px;"><img src="/images/logo.png" alt="Holiday Planner" style="height: 60px;"> HOLIDAY PLANNER</h2>
+          <p>Curating exceptional travel experiences worldwide.</p>
+        </div>
+        <div class="footer-links">
+          <div class="link-col">
+            <h4>Contact Us</h4>
+            <a href="tel:+919454838266">+91 9454838266</a>
+            <a href="mailto:holidayplanner2010@gmail.com">holidayplanner2010@gmail.com</a>
+            <p>30/9/7D, P. D. Tandon Road, Civil Lines<br>(Opp. Dhobi Ghat, Petrol Pump Crossing)<br>Allahabad-211001</p>
+            <p style="margin-top: 10px;"><strong>Timings:</strong><br>Mon-Sat: 10:00 AM - 7:00 PM<br>Sunday: Closed</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Inquiry Modal -->
+    <div id="inquiryModal" class="modal-overlay">
+      <div class="modal-content">
+        <button class="modal-close">&times;</button>
+        <h2 class="modal-title">Plan Your Dream Trip</h2>
+        <form id="inquiryForm" class="modal-form">
+          <input type="text" placeholder="Your Name" required class="form-input" style="margin-bottom: 15px;">
+          <input type="email" placeholder="Your Email" required class="form-input" style="margin-bottom: 15px;">
+          <div class="form-row">
+            <input type="date" class="form-input" required title="Travel Date">
+            <select class="form-input" required>
+              <option value="" disabled selected>Select Budget</option>
+              <option value="economy">Economy (&lt; $1,000)</option>
+              <option value="standard">Standard ($1,000 - $3,000)</option>
+              <option value="premium">Premium ($3,000 - $5,000)</option>
+              <option value="luxury">Luxury ($5,000+)</option>
+            </select>
+          </div>
+          <input type="tel" placeholder="Phone Number" class="form-input" style="margin-bottom: 15px; margin-top: 15px;">
+          <textarea placeholder="Tell us about your dream destination or any special requests..." rows="4" required class="form-input" style="margin-bottom: 15px;"></textarea>
+          <button type="submit" class="btn btn-primary w-100">Request Consultation</button>
+        </form>
+      </div>
+    </div>
+    
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+      <span class="toast-icon">✓</span>
+      <span class="toast-message">Action successful!</span>
+    </div>
+
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
