@@ -35,7 +35,7 @@ function initLoader() {
 function initNavigation() {
   const header = document.querySelector('.header');
   const menuToggle = document.querySelector('.menu-toggle');
-  const navLinksContainer = document.querySelector('.nav-links');
+  const navLinksContainer = document.querySelector('.nav-animated');
 
   window.addEventListener('scroll', () => {
     if (window.scrollY > 50) header.classList.add('scrolled');
