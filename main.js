@@ -40,6 +40,12 @@ function initNavigation() {
   window.addEventListener('scroll', () => {
     if (window.scrollY > 50) header.classList.add('scrolled');
     else if (!document.body.classList.contains('inner-page')) header.classList.remove('scrolled');
+    
+    // Bulletproof scrollspy for bottom section
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
+      const aboutRadio = document.getElementById('rd-about');
+      if (aboutRadio && !aboutRadio.checked) aboutRadio.checked = true;
+    }
   });
 
   menuToggle.addEventListener('click', () => {
