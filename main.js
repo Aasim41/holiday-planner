@@ -74,36 +74,7 @@ function initNavigation() {
     document.body.classList.toggle('modal-open');
   });
 
-  // ScrollSpy for Top Nav Bar
-  const sections = document.querySelectorAll('#destinations, #services, #process, #tours, #testimonials, #about');
-  const navRadios = {
-    'destinations': 'rd-1',
-    'services': 'rd-2',
-    'process': 'rd-process',
-    'tours': 'rd-3',
-    'testimonials': 'rd-4',
-    'about': 'rd-about'
-  };
 
-  const observerOptions = {
-    root: null,
-    rootMargin: '-20% 0px -40% 0px',
-    threshold: 0
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const radioId = navRadios[entry.target.id];
-        const radio = document.getElementById(radioId);
-        if (radio && !radio.checked) {
-          radio.checked = true;
-        }
-      }
-    });
-  }, observerOptions);
-
-  sections.forEach(section => observer.observe(section));
 
   // Smooth scroll logic only for anchor links on current page
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
