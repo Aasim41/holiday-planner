@@ -37,14 +37,34 @@ function initNavigation() {
   const menuToggle = document.querySelector('.menu-toggle');
   const navLinksContainer = document.querySelector('.nav-animated');
 
+  const sections = document.querySelectorAll('section');
+  const navRadios = {
+    'destinations': document.getElementById('rd-1'),
+    'services': document.getElementById('rd-2'),
+    'process': document.getElementById('rd-process'),
+    'tours': document.getElementById('rd-3'),
+    'testimonials': document.getElementById('rd-4'),
+    'about': document.getElementById('rd-about')
+  };
+
   window.addEventListener('scroll', () => {
     if (window.scrollY > 50) header.classList.add('scrolled');
     else if (!document.body.classList.contains('inner-page')) header.classList.remove('scrolled');
     
-    // Bulletproof scrollspy for bottom section
-    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
-      const aboutRadio = document.getElementById('rd-about');
-      if (aboutRadio && !aboutRadio.checked) aboutRadio.checked = true;
+    let current = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      if (scrollY >= (sectionTop - 300)) {
+        current = section.getAttribute('id');
+      }
+    });
+
+    if (current && navRadios[current]) {
+      if (!navRadios[current].checked) navRadios[current].checked = true;
+    } else if (window.scrollY < 300) {
+      if (navRadios['destinations'] && !navRadios['destinations'].checked) {
+        navRadios['destinations'].checked = true;
+      }
     }
   });
 
