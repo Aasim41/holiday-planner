@@ -333,6 +333,8 @@ body.loaded .hidden-initial { opacity: 1; transform: translateY(0); }
 .loader-logo img, .footer-brand img { border-radius: 8px; }
 .logo img { 
     border-radius: 0; 
+    width: auto !important;
+    max-width: 250px;
     object-fit: contain; 
     overflow: visible; 
     padding-bottom: 2px;
