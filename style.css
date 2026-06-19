@@ -1245,3 +1245,93 @@ body.loaded .hidden-initial { opacity: 1; transform: translateY(0); }
     margin: 10px 0;
   }
 }
+
+/* === Comprehensive Mobile Responsive Fixes === */
+@media (max-width: 768px) {
+  body {
+    overflow-x: hidden; /* Prevent horizontal scroll */
+  }
+  
+  /* Fix Desktop Nav Bar breaking layout on mobile */
+  .wrap.nav-animated {
+    display: none; /* Hide until hamburger is clicked to override desktop flex */
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100vh;
+    background: var(--white);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    transform: translateX(100%);
+    transition: transform 0.4s ease;
+    z-index: 1000;
+    border-radius: 0;
+    padding: 20px;
+    border: none !important;
+  }
+  .wrap.nav-animated.active {
+    display: flex;
+    transform: translateX(0);
+  }
+  
+  /* Hide the horizontal sliding bar on mobile */
+  .wrap.nav-animated .slidebar,
+  .wrap.nav-animated .bar {
+    display: none !important;
+  }
+  
+  /* Style the nav labels for mobile column */
+  .wrap.nav-animated .label {
+    width: 100%;
+    text-align: center;
+    padding: 15px;
+    font-size: 1.2rem;
+    color: var(--text-dark) !important;
+    border-radius: 10px;
+  }
+  
+  /* Active state for mobile */
+  .wrap.nav-animated input[class*="rd-"]:checked + label {
+    background: var(--primary-color);
+    color: var(--white) !important;
+  }
+  
+  /* Fix hamburger toggle visibility */
+  .menu-toggle {
+    display: flex;
+    z-index: 1001; /* Keep above the mobile menu */
+    position: relative;
+  }
+  .menu-toggle span {
+    background-color: var(--text-dark);
+  }
+  
+  /* Prevent about image from overflowing */
+  .about-image {
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    aspect-ratio: 3/4;
+    margin: 0 auto;
+  }
+  
+  /* Image split row height */
+  .image-split-image {
+    height: 300px;
+  }
+  
+  /* Ensure grids are strictly 1 column on mobile */
+  .dest-grid, .services-grid, .test-grid, .loc-grid, .service-perks, .about-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* Fix footer overlapping */
+  .footer-top {
+    grid-template-columns: 1fr !important;
+    gap: 40px;
+  }
+  .footer-links {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
