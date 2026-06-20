@@ -88,131 +88,189 @@
                 <h1 class="font-display" style="font-size: 2.5rem; margin-bottom: 10px;">Travel Inquiry</h1>
                 <p style="margin-bottom: 40px; color: var(--text-color);">Please fill out the following form to provide more information about your request.</p>
                 
-                <form class="mk-form" action="#" method="POST">
+                <form id="multiStepForm" class="mk-form" action="#" method="POST">
                   
-                  <div class="form-row">
-                    <div class="form-group">
-                      <label for="firstName">First Name *</label>
-                      <input type="text" id="firstName" name="firstName" required>
-                    </div>
-                    <div class="form-group">
-                      <label for="lastName">Last Name *</label>
-                      <input type="text" id="lastName" name="lastName" required>
-                    </div>
+                  <!-- Step Progress Bar -->
+                  <div class="step-progress" style="display: flex; justify-content: space-between; margin-bottom: 30px; border-bottom: 2px solid #eee; padding-bottom: 15px;">
+                    <span class="step-indicator" id="indicator-1" style="font-size: 0.9rem; color: var(--primary-color); font-weight: bold;">1. Personal</span>
+                    <span class="step-indicator" id="indicator-2" style="font-size: 0.9rem; color: #999;">2. Logistics</span>
+                    <span class="step-indicator" id="indicator-3" style="font-size: 0.9rem; color: #999;">3. Preferences</span>
                   </div>
 
-                  <div class="form-group">
-                    <label for="preferredName">Preferred Name *</label>
-                    <input type="text" id="preferredName" name="preferredName" required>
-                  </div>
-
-                  <div class="form-row">
-                    <div class="form-group">
-                      <label for="email">Email *</label>
-                      <input type="email" id="email" name="email" placeholder="example@example.com" required>
-                    </div>
-                    <div class="form-group">
-                      <label for="phone">Phone Number *</label>
-                      <input type="tel" id="phone" name="phone" placeholder="(000) 000-0000" required>
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="destination">Where would you like to plan your next trip? *</label>
-                    <input type="text" id="destination" name="destination" required>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="addInfo">Please provide additional information about your desired destination:</label>
-                    <textarea id="addInfo" name="addInfo" rows="4"></textarea>
-                  </div>
-
-                  <div class="form-row">
-                    <div class="form-group">
-                      <label for="travelDate">Preferred travel start date? *</label>
-                      <input type="date" id="travelDate" name="travelDate" required>
-                    </div>
-                    <div class="form-group">
-                      <label>Are the dates fixed or flexible? *</label>
-                      <div class="radio-group">
-                        <label><input type="radio" name="flexible" value="Fixed" required> Fixed</label>
-                        <label><input type="radio" name="flexible" value="Flexible" required> Flexible</label>
+                  <!-- STEP 1 -->
+                  <div class="form-step" id="step-1">
+                    <div class="form-row">
+                      <div class="form-group">
+                        <label for="firstName">First Name *</label>
+                        <input type="text" id="firstName" name="firstName" required>
+                      </div>
+                      <div class="form-group">
+                        <label for="lastName">Last Name *</label>
+                        <input type="text" id="lastName" name="lastName" required>
                       </div>
                     </div>
-                  </div>
-
-                  <div class="form-row">
                     <div class="form-group">
-                      <label for="nights">How many nights? *</label>
-                      <input type="number" id="nights" name="nights" required>
+                      <label for="preferredName">Preferred Name *</label>
+                      <input type="text" id="preferredName" name="preferredName" required>
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" placeholder="example@example.com" required>
+                      </div>
+                      <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" placeholder="(000) 000-0000" required>
+                      </div>
+                    </div>
+                    <button type="button" class="btn btn-primary" onclick="nextStep(2)" style="width: 100%; padding: 15px; font-size: 1.1rem; border-radius: 4px; margin-top: 20px;">Next Step: Trip Logistics</button>
+                  </div>
+
+                  <!-- STEP 2 -->
+                  <div class="form-step" id="step-2" style="display: none;">
+                    <div class="form-group">
+                      <label for="destination">Where would you like to plan your next trip? *</label>
+                      <input type="text" id="destination" name="destination" required>
                     </div>
                     <div class="form-group">
-                      <label for="travelers">How many travelers? * <small>(Please include yourself)</small></label>
-                      <input type="number" id="travelers" name="travelers" required>
+                      <label for="addInfo">Please provide additional information about your desired destination:</label>
+                      <textarea id="addInfo" name="addInfo" rows="3"></textarea>
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group">
+                        <label for="travelDate">Preferred travel start date? *</label>
+                        <input type="date" id="travelDate" name="travelDate" required>
+                      </div>
+                      <div class="form-group">
+                        <label>Are the dates fixed or flexible? *</label>
+                        <div class="radio-group">
+                          <label><input type="radio" name="flexible" value="Fixed" required> Fixed</label>
+                          <label><input type="radio" name="flexible" value="Flexible" required> Flexible</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group">
+                        <label for="nights">How many nights? *</label>
+                        <input type="number" id="nights" name="nights" required>
+                      </div>
+                      <div class="form-group">
+                        <label for="travelers">How many travelers? * <small>(Include yourself)</small></label>
+                        <input type="number" id="travelers" name="travelers" required>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="departure">What is your departure city?</label>
+                      <input type="text" id="departure" name="departure">
+                    </div>
+                    <div style="display: flex; gap: 15px; margin-top: 20px;">
+                      <button type="button" class="btn btn-outline" onclick="prevStep(1)" style="flex: 1; padding: 15px; font-size: 1.1rem; border: 1px solid var(--text-color); background: transparent; color: var(--text-color); border-radius: 4px; cursor: pointer;">Back</button>
+                      <button type="button" class="btn btn-primary" onclick="nextStep(3)" style="flex: 2; padding: 15px; font-size: 1.1rem; border-radius: 4px;">Next Step: Preferences</button>
                     </div>
                   </div>
 
-                  <div class="form-group">
-                    <label for="departure">What is your departure city?</label>
-                    <input type="text" id="departure" name="departure">
-                  </div>
-
-                  <div class="form-group">
-                    <label>What is your budget for all travelers, EXCLUDING flights? *</label>
-                    <p class="form-desc" style="font-size: 0.85rem; color: #666; margin-bottom: 10px;">
-                      Holiday Planner designs customized itineraries including five-star hotels & resorts, immersive experiences with private guides, private transportation, and all concierge services. This means we typically work with budgets of ₹50,000 - ₹1,00,000+ per person, per trip. This range provides us with a starting point & can be discussed or changed later.
-                    </p>
-                    <div class="radio-stack">
-                      <label><input type="radio" name="budget" value="2L or less" required> ₹2,00,000 or less</label>
-                      <label><input type="radio" name="budget" value="2L-5L" required> ₹2,00,000 - ₹5,00,000</label>
-                      <label><input type="radio" name="budget" value="5L-10L" required> ₹5,00,000 - ₹10,00,000</label>
-                      <label><input type="radio" name="budget" value="10L-20L" required> ₹10,00,000 - ₹20,00,000</label>
-                      <label><input type="radio" name="budget" value="20L-30L" required> ₹20,00,000 - ₹30,00,000</label>
-                      <label><input type="radio" name="budget" value="30L+" required> ₹30,00,000+</label>
+                  <!-- STEP 3 -->
+                  <div class="form-step" id="step-3" style="display: none;">
+                    <div class="form-group">
+                      <label>What is your budget for all travelers, EXCLUDING flights? *</label>
+                      <p class="form-desc" style="font-size: 0.85rem; color: #666; margin-bottom: 10px;">
+                        Holiday Planner designs customized itineraries starting with budgets of ₹50,000 - ₹1,00,000+ per person.
+                      </p>
+                      <div class="radio-stack">
+                        <label><input type="radio" name="budget" value="2L or less" required> ₹2,00,000 or less</label>
+                        <label><input type="radio" name="budget" value="2L-5L" required> ₹2,00,000 - ₹5,00,000</label>
+                        <label><input type="radio" name="budget" value="5L-10L" required> ₹5,00,000 - ₹10,00,000</label>
+                        <label><input type="radio" name="budget" value="10L-20L" required> ₹10,00,000 - ₹20,00,000</label>
+                        <label><input type="radio" name="budget" value="20L-30L" required> ₹20,00,000 - ₹30,00,000</label>
+                        <label><input type="radio" name="budget" value="30L+" required> ₹30,00,000+</label>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="occasion">Celebrating a special occasion? If so, please advise * <small>(If not, N/A)</small></label>
+                      <input type="text" id="occasion" name="occasion" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="favoriteTrips">What have been some of your favorite trips and why? *</label>
+                      <textarea id="favoriteTrips" name="favoriteTrips" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                      <label>How did you hear about us? *</label>
+                      <select name="source" class="form-input" required style="width: 100%; padding: 15px; border-radius: 8px; border: 1px solid rgba(0,0,0,0.1); font-family: inherit; font-size: 1rem;">
+                        <option value="">Please Select</option>
+                        <option value="Friend">Friend/Referral</option>
+                        <option value="SocialMedia">Social Media</option>
+                        <option value="Search">Internet Search</option>
+                        <option value="Other">Other</option>
+                      </select>
+                    </div>
+                    <div class="form-group" style="margin-top: 20px;">
+                      <label for="passports">Are all passports up to date? *</label>
+                      <select id="passports" name="passports" class="form-input" required style="width: 100%; padding: 15px; border-radius: 8px; border: 1px solid rgba(0,0,0,0.1); font-family: inherit; font-size: 1rem;">
+                        <option value="">Please Select</option>
+                        <option value="Yes">Yes, all up to date.</option>
+                        <option value="No">No, need to be renewed.</option>
+                        <option value="NA">Domestic Travel Only</option>
+                      </select>
+                    </div>
+                    <div style="display: flex; gap: 15px; margin-top: 30px;">
+                      <button type="button" class="btn btn-outline" onclick="prevStep(2)" style="flex: 1; padding: 15px; font-size: 1.1rem; border: 1px solid var(--text-color); background: transparent; color: var(--text-color); border-radius: 4px; cursor: pointer;">Back</button>
+                      <button type="submit" class="btn btn-primary" style="flex: 2; padding: 15px; font-size: 1.1rem; border-radius: 4px;">Submit Inquiry</button>
                     </div>
                   </div>
-
-                  <div class="form-group">
-                    <label for="occasion">Are you celebrating a special occasion? If so, please advise * <small>(If not, write N/A)</small></label>
-                    <input type="text" id="occasion" name="occasion" required>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="favoriteTrips">What have been some of your favorite trips and/or hotels and why? *</label>
-                    <textarea id="favoriteTrips" name="favoriteTrips" rows="4" required></textarea>
-                  </div>
-
-                  <div class="form-group">
-                    <label>How did you hear about Martha King Travel? *</label>
-                    <div class="radio-stack">
-                      <label><input type="radio" name="source" value="Friend" required> Friend/Referral</label>
-                      <label><input type="radio" name="source" value="TravelLeisure" required> Travel + Leisure</label>
-                      <label><input type="radio" name="source" value="CondeNast" required> Condé Nast Traveler</label>
-                      <label><input type="radio" name="source" value="SocialMedia" required> Social Media</label>
-                      <label><input type="radio" name="source" value="Virtuoso" required> Virtuoso</label>
-                      <label><input type="radio" name="source" value="Search" required> Internet Search</label>
-                      <label><input type="radio" name="source" value="Other" required> Other</label>
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="travelStyle">What else would you like us to know about your travel style & travel needs?</label>
-                    <textarea id="travelStyle" name="travelStyle" rows="4"></textarea>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="passports">All passports for everyone traveling are up to date and will not expire less than 6 months after the travel departure date. *</label>
-                    <select id="passports" name="passports" required>
-                      <option value="">Please Select</option>
-                      <option value="Yes">Yes, all passports are up to date.</option>
-                      <option value="No">No, some or all passports need to be renewed.</option>
-                      <option value="NA">Not Applicable (Domestic Travel Only)</option>
-                    </select>
-                  </div>
-
-                  <button type="submit" class="btn btn-primary" style="width: 100%; padding: 15px; font-size: 1.1rem; border-radius: 4px; margin-top: 20px;">Submit Inquiry</button>
 
                 </form>
+
+                <script>
+                  function nextStep(step) {
+                    const currentStepDiv = document.getElementById('step-' + (step - 1));
+                    const inputs = currentStepDiv.querySelectorAll('input[required], select[required], textarea[required]');
+                    let isValid = true;
+                    
+                    inputs.forEach(input => {
+                      if(input.type === 'radio') {
+                        const name = input.name;
+                        const checked = currentStepDiv.querySelector(`input[name="${name}"]:checked`);
+                        if(!checked) {
+                          isValid = false;
+                          input.reportValidity();
+                        }
+                      } else if(!input.checkValidity()) {
+                        isValid = false;
+                        input.reportValidity();
+                      }
+                    });
+                    
+                    if(!isValid) return;
+
+                    document.querySelectorAll('.form-step').forEach(el => el.style.display = 'none');
+                    document.getElementById('step-' + step).style.display = 'block';
+                    
+                    document.querySelectorAll('.step-indicator').forEach(el => {
+                      el.style.fontWeight = 'normal';
+                      el.style.color = '#999';
+                    });
+                    const activeIndicator = document.getElementById('indicator-' + step);
+                    activeIndicator.style.fontWeight = 'bold';
+                    activeIndicator.style.color = 'var(--primary-color)';
+                    
+                    document.querySelector('.inquiry-form-container').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }
+
+                  function prevStep(step) {
+                    document.querySelectorAll('.form-step').forEach(el => el.style.display = 'none');
+                    document.getElementById('step-' + step).style.display = 'block';
+                    
+                    document.querySelectorAll('.step-indicator').forEach(el => {
+                      el.style.fontWeight = 'normal';
+                      el.style.color = '#999';
+                    });
+                    const activeIndicator = document.getElementById('indicator-' + step);
+                    activeIndicator.style.fontWeight = 'bold';
+                    activeIndicator.style.color = 'var(--primary-color)';
+                    
+                    document.querySelector('.inquiry-form-container').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }
+                </script>
               </div>
             </div>
 
