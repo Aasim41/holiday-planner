@@ -161,7 +161,7 @@ function renderAllDestinations() {
   grid.innerHTML = filteredData.map((dest, index) => `
     <a href="location.html?id=${dest.id}" class="dest-card scroll-reveal visible" style="animation-delay: ${index * 0.1}s">
       <div class="dest-img-wrap">
-        <img src="${dest.img}" alt="${dest.name}">
+        <img src="${dest.img}" alt="${dest.name}" loading="lazy">
       </div>
       <div class="dest-info text-left">
         <span class="dest-tag">${dest.tag}</span>
@@ -197,7 +197,7 @@ function renderHomepageDestinations(filterStr = 'all') {
   grid.innerHTML = previewData.map((dest, index) => `
     <a href="location.html?id=${dest.id}" class="dest-card scroll-reveal visible" style="animation-delay: ${index * 0.1}s">
       <div class="dest-img-wrap">
-        <img src="${dest.img}" alt="${dest.name}">
+        <img src="${dest.img}" alt="${dest.name}" loading="lazy">
       </div>
       <div class="dest-info text-left">
         <span class="dest-tag">${dest.tag}</span>

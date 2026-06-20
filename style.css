@@ -1267,7 +1267,7 @@ body.loaded .hidden-initial { opacity: 1; transform: translateY(0); }
     position: fixed;
     top: 0; left: 0;
     width: 100%; height: 100vh;
-    background: var(--white);
+    background: var(--white) !important;
     flex-direction: column;
     justify-content: center;
     align-items: center;
