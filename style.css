@@ -1248,8 +1248,17 @@ body.loaded .hidden-initial { opacity: 1; transform: translateY(0); }
 
 /* === Comprehensive Mobile Responsive Fixes === */
 @media (max-width: 768px) {
-  body {
-    overflow-x: hidden; /* Prevent horizontal scroll */
+  html, body {
+    overflow-x: hidden; /* Prevent horizontal scroll completely */
+    max-width: 100%;
+  }
+  
+  /* Center About Text */
+  .about-text {
+    text-align: center;
+  }
+  .about-text .title {
+    text-align: center;
   }
   
   /* Fix Desktop Nav Bar breaking layout on mobile */
