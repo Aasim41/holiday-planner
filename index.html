@@ -173,26 +173,29 @@
       <!-- Interactive World Map Explorer Section (Feature 4) -->
       <section id="world-explorer" class="section explorer-section scroll-reveal">
         <div class="wrap">
-          <div class="section-header text-center mx-auto" style="justify-content: center; text-align: center; margin-bottom: 35px;">
+          <div class="section-header text-center mx-auto" style="justify-content: center; text-align: center; margin-bottom: 28px;">
             <div class="section-title-wrap text-center">
-              <span class="explorer-badge">INTERACTIVE WORLD ATLAS</span>
-              <h2 class="section-title" style="color: #fff; margin-top: 10px;">Explore Our Global Luxury Hubs</h2>
-              <p style="color: rgba(255,255,255,0.75); max-width: 640px; margin: 0 auto;">Zoom, pan, and click any glowing marker on our live interactive map—or select a destination below—to inspect flight times, seasons, and curated experiences.</p>
+              <span class="explorer-badge">INTERACTIVE WORLD ATLAS • ALL 46 DESTINATIONS</span>
+              <h2 class="section-title" style="color: #fff; margin-top: 10px;">Explore All Our Destinations on the Map</h2>
+              <p style="color: rgba(255,255,255,0.75); max-width: 680px; margin: 0 auto;">Click any of the 46 glowing pins across India & the world—or filter below—to view photos, package prices, and curated highlights.</p>
             </div>
           </div>
 
-          <!-- Quick Select Pills for Fast Switching -->
+          <!-- Filter Bar + Search for All 46 Map Destinations -->
+          <div class="explorer-filter-bar">
+            <div class="explorer-region-tabs" id="explorerRegionTabs">
+              <button type="button" class="exp-tab-btn active" data-region="all">🌍 All Destinations (46)</button>
+              <button type="button" class="exp-tab-btn" data-region="domestic">🇮🇳 India Domestic (25)</button>
+              <button type="button" class="exp-tab-btn" data-region="international">✈️ International (21)</button>
+            </div>
+            <div class="explorer-map-search-wrap">
+              <input type="text" id="mapHubSearch" class="explorer-map-search" placeholder="🔍 Quick find on map (e.g. Ladakh, Mecca, Venice, Goa...)">
+            </div>
+          </div>
+
+          <!-- Scrollable Quick Select Pills for All 46 Destinations (Populated by main.js) -->
           <div class="explorer-pills" id="explorerPills">
-            <button type="button" class="explorer-pill active" data-hub="maldives">🇲🇻 Maldives</button>
-            <button type="button" class="explorer-pill" data-hub="dubai">🇦🇪 Dubai</button>
-            <button type="button" class="explorer-pill" data-hub="switzerland">🇨🇭 Swiss Alps</button>
-            <button type="button" class="explorer-pill" data-hub="london">🇬🇧 London</button>
-            <button type="button" class="explorer-pill" data-hub="paris">🇫🇷 Paris</button>
-            <button type="button" class="explorer-pill" data-hub="singapore">🇸🇬 Singapore</button>
-            <button type="button" class="explorer-pill" data-hub="goa">🇮🇳 Goa</button>
-            <button type="button" class="explorer-pill" data-hub="bali">🇮🇩 Bali</button>
-            <button type="button" class="explorer-pill" data-hub="kashmir">🇮🇳 Kashmir</button>
-            <button type="button" class="explorer-pill" data-hub="jaipur">🇮🇳 Jaipur</button>
+            <!-- Dynamically populated with all 46 destinations from data.js -->
           </div>
 
           <div class="explorer-layout">
@@ -201,11 +204,12 @@
               <div class="map-toolbar">
                 <div class="map-toolbar-title">
                   <span class="legend-dot"></span>
-                  <span>Interactive Global Map — Click any pin or zoom in</span>
+                  <span id="mapCounterLabel">Showing all 46 destinations — Click any pin for photo & details</span>
                 </div>
                 <div class="map-toolbar-actions">
+                  <button type="button" id="mapIndiaBtn" class="map-tool-btn">🇮🇳 Zoom India</button>
                   <button type="button" id="mapResetBtn" class="map-tool-btn">🌍 World View</button>
-                  <button type="button" id="mapThemeBtn" class="map-tool-btn">☀️ Light Map</button>
+                  <button type="button" id="mapThemeBtn" class="map-tool-btn">🛰️ Satellite View</button>
                 </div>
               </div>
               <div id="luxuryWorldMap" class="leaflet-luxury-map"></div>
@@ -214,24 +218,24 @@
             <!-- Right: Dynamic Destination Spotlight Card -->
             <div class="explorer-spotlight-card" id="explorerSpotlight">
               <div class="spotlight-img-wrap">
-                <img id="spotImg" src="/images/hero_slide_1.png" alt="Maldives" decoding="async" onerror="this.onerror=null;this.src='/images/hero_slide_1.png';">
-                <span class="spotlight-region" id="spotRegion">INDIAN OCEAN • PRIVATE ISLANDS</span>
+                <img id="spotImg" src="/images/generated/maldives_water_villa_1781630466772.png" alt="Maldives" decoding="async" onerror="this.onerror=null;this.src='/images/hero_slide_1.png';">
+                <span class="spotlight-region" id="spotRegion">INTERNATIONAL • BEACH</span>
               </div>
               <div class="spotlight-body">
                 <div class="spotlight-header-row">
-                  <h3 id="spotTitle">The Maldives</h3>
+                  <h3 id="spotTitle">Maldives</h3>
                   <div class="spotlight-price">
-                    <small>Starting from</small>
-                    <strong id="spotPrice">₹1,85,000</strong>
-                    <small>/ couple</small>
+                    <small>Package from</small>
+                    <strong id="spotPrice">₹2,12,500</strong>
+                    <small id="spotDaysLabel">5 Days / 4 Nights</small>
                   </div>
                 </div>
                 <p id="spotDesc">Wake up in a private overwater pool villa surrounded by turquoise lagoons, private seaplane transfers, and underwater fine dining.</p>
                 
                 <div class="spotlight-meta-grid">
                   <div class="spot-meta-item">
-                    <span class="meta-label">✈️ Flight from India</span>
-                    <strong id="spotFlight">~4h 15m Direct</strong>
+                    <span class="meta-label">🗓️ Recommended Stay</span>
+                    <strong id="spotFlight">5 Days / 4 Nights</strong>
                   </div>
                   <div class="spot-meta-item">
                     <span class="meta-label">☀️ Best Season</span>
@@ -240,13 +244,13 @@
                 </div>
 
                 <ul class="spotlight-highlights" id="spotHighlights">
-                  <li>✦ Private Overwater Pool Villa with Butler</li>
-                  <li>✦ Sunset Dolphin Cruise & Sandbank Dinner</li>
-                  <li>✦ Complimentary Seaplane Lounge Access</li>
+                  <li>✦ 3-Star, 4-Star & 5-Star Resort Options Available</li>
+                  <li>✦ Private Airport / Speedboat Transfers Included</li>
+                  <li>✦ Custom Sightseeing & Concierge Support</li>
                 </ul>
 
                 <div class="spotlight-actions">
-                  <a id="spotPlanBtn" href="inquiry.html?dest=The%20Maldives" class="btn-luxury-gradient" style="flex: 1.25; text-align: center; text-decoration: none;">Plan This Trip →</a>
+                  <a id="spotPlanBtn" href="inquiry.html?dest=Maldives" class="btn-luxury-gradient" style="flex: 1.25; text-align: center; text-decoration: none;">Plan This Trip →</a>
                   <a id="spotWaBtn" href="https://wa.me/919454838266" target="_blank" rel="noopener" class="btn btn-wa-outline" style="flex: 1; text-align: center; text-decoration: none;">💬 Ask Concierge</a>
                 </div>
               </div>
@@ -262,7 +266,7 @@
             <div class="section-title-wrap text-center">
               <span class="estimator-badge">INSTANT BESPOKE CALCULATOR</span>
               <h2 class="section-title" style="margin-top: 8px;">Interactive Trip Budget Estimator</h2>
-              <p class="mx-auto" style="max-width: 620px;">Search any destination in the world, adjust your trip duration, and choose your luxury style to get an instant ballpark estimate.</p>
+              <p class="mx-auto" style="max-width: 620px;">Search any destination in the world, adjust your trip duration (from 1 night upwards), and choose 3-Star, 4-Star, 5-Star, or VIP luxury.</p>
             </div>
           </div>
 
@@ -273,7 +277,7 @@
               <div class="est-control-group">
                 <div class="est-label-row">
                   <label class="est-label" for="estDestSearch">1. Search Your Destination</label>
-                  <span class="est-selected-badge" id="estSelectedBadge">🇲🇻 Maldives</span>
+                  <span class="est-selected-badge" id="estSelectedBadge">📍 Maldives</span>
                 </div>
                 <div class="est-search-wrapper" id="estSearchWrapper">
                   <span class="est-search-icon">🔍</span>
@@ -281,8 +285,8 @@
                     type="text"
                     id="estDestSearch"
                     class="est-search-input"
-                    placeholder="Search any destination (e.g. Maldives, Dubai, Kashmir, Paris, Goa...)"
-                    value="Maldives — Overwater Villa Escape"
+                    placeholder="Search any of our 46+ destinations (e.g. Goa, Kashmir, Maldives, Dubai, Mecca...)"
+                    value="Maldives"
                     autocomplete="off"
                   >
                   <button type="button" id="estSearchClear" class="est-search-clear" title="Clear search" aria-label="Clear search">&times;</button>
@@ -290,27 +294,28 @@
                 </div>
                 <!-- Quick Popular Destination Chips -->
                 <div class="est-quick-chips" id="estQuickChips">
-                  <button type="button" class="est-chip active" data-dest="Maldives — Overwater Villa Escape" data-base="32000">Maldives</button>
-                  <button type="button" class="est-chip" data-dest="Dubai — Palm Jumeirah & Royal Desert" data-base="24000">Dubai</button>
-                  <button type="button" class="est-chip" data-dest="Switzerland & Europe — Alpine Luxury" data-base="42000">Switzerland</button>
-                  <button type="button" class="est-chip" data-dest="Kashmir — Srinagar Luxury Houseboat & Gulmarg" data-base="15000">Kashmir</button>
-                  <button type="button" class="est-chip" data-dest="Goa — Private Beachfront Villa & Yacht" data-base="14000">Goa</button>
-                  <button type="button" class="est-chip" data-dest="Bali — Ubud & Cliffside Pool Villas" data-base="20000">Bali</button>
-                  <button type="button" class="est-chip" data-dest="Paris & French Riviera" data-base="38000">Paris</button>
-                  <button type="button" class="est-chip" data-dest="Singapore — Marina Bay & Sentosa VIP" data-base="26000">Singapore</button>
+                  <button type="button" class="est-chip active" data-dest="Maldives" data-base="32000">Maldives</button>
+                  <button type="button" class="est-chip" data-dest="Dubai" data-base="24000">Dubai</button>
+                  <button type="button" class="est-chip" data-dest="Swiss Alps" data-base="36000">Swiss Alps</button>
+                  <button type="button" class="est-chip" data-dest="Srinagar Dal Lake" data-base="11000">Kashmir</button>
+                  <button type="button" class="est-chip" data-dest="Goa Beaches" data-base="9500">Goa</button>
+                  <button type="button" class="est-chip" data-dest="Bali" data-base="16000">Bali</button>
+                  <button type="button" class="est-chip" data-dest="Kerala Backwaters" data-base="10500">Kerala</button>
+                  <button type="button" class="est-chip" data-dest="Andaman Islands" data-base="13000">Andaman</button>
                 </div>
               </div>
 
-              <!-- 2. Duration Slider -->
+              <!-- 2. Duration Slider (Min 1 Night!) -->
               <div class="est-control-group">
                 <div class="est-label-row">
                   <label class="est-label" for="estNights">2. Trip Duration</label>
                   <span class="est-value-pill" id="estNightsDisplay">5 Nights / 6 Days</span>
                 </div>
-                <input type="range" id="estNights" class="est-slider" min="3" max="14" value="5">
+                <input type="range" id="estNights" class="est-slider" min="1" max="14" value="5">
                 <div class="est-range-Ticks">
-                  <span>3 Nights</span>
-                  <span>7 Nights</span>
+                  <span>1 Night</span>
+                  <span>5 Nights</span>
+                  <span>10 Nights</span>
                   <span>14 Nights</span>
                 </div>
               </div>
@@ -330,17 +335,25 @@
                 </div>
               </div>
 
-              <!-- 4. Luxury Style Tier -->
+              <!-- 4. Hotel & Luxury Style Tier (3-Star, 4-Star, 5-Star, VIP) -->
               <div class="est-control-group">
-                <label class="est-label">4. Select Luxury Style</label>
+                <label class="est-label">4. Select Hotel Category & Style</label>
                 <div class="est-tier-grid">
+                  <button type="button" class="est-tier-btn" data-tier="3star" data-mult="0.55">
+                    <span class="tier-title">⭐⭐⭐ 3-Star Comfort</span>
+                    <span class="tier-sub">Verified 3-Star Hotels, Breakfast & Standard Transfers</span>
+                  </button>
+                  <button type="button" class="est-tier-btn" data-tier="4star" data-mult="0.78">
+                    <span class="tier-title">⭐⭐⭐⭐ 4-Star Premium</span>
+                    <span class="tier-sub">Handpicked 4-Star Resorts, Private Transfers & Sightseeing</span>
+                  </button>
                   <button type="button" class="est-tier-btn active" data-tier="signature" data-mult="1">
-                    <span class="tier-title">✦ 5-Star Signature</span>
-                    <span class="tier-sub">5-Star Resorts, Private Transfers & Guided Tours</span>
+                    <span class="tier-title">⭐⭐⭐⭐⭐ 5-Star Luxury</span>
+                    <span class="tier-sub">5-Star Resorts, Chauffeur Transfers & Curated Tours</span>
                   </button>
                   <button type="button" class="est-tier-btn" data-tier="vip" data-mult="1.65">
                     <span class="tier-title">👑 Ultra-Bespoke VIP</span>
-                    <span class="tier-sub">Private Pool Villas, Chauffeur, Yacht & Butler</span>
+                    <span class="tier-sub">Private Pool Villas, Luxury SUV, Yacht & Butler</span>
                   </button>
                 </div>
               </div>
@@ -372,7 +385,7 @@
                     <span>💬 Send Estimate to WhatsApp</span>
                   </a>
                 </div>
-                <small class="est-disclaimer">*Final pricing varies by exact travel dates & suite availability.</small>
+                <small class="est-disclaimer">*Final pricing varies by exact travel dates & hotel availability.</small>
               </div>
             </div>
           </div>

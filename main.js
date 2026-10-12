@@ -437,202 +437,98 @@ function initWhatsAppConcierge() {
 }
 
 // =========================================================
-// FEATURE 4: REAL INTERACTIVE WORLD MAP EXPLORER (LEAFLET)
+// FEATURE 4: REAL INTERACTIVE WORLD MAP WITH ALL 46 DESTINATIONS
 // =========================================================
-const EXPLORER_HUBS = {
-  maldives: {
-    title: 'The Maldives',
-    shortLabel: 'Maldives',
-    lat: 3.2028,
-    lng: 73.2207,
-    zoom: 6,
-    region: 'INDIAN OCEAN • PRIVATE ISLANDS',
-    price: '₹1,85,000',
-    img: '/images/generated/maldives_water_villa_1781630466772.png',
-    desc: 'Wake up in a private overwater pool villa surrounded by turquoise lagoons, private seaplane transfers, and underwater fine dining.',
-    flight: '~4h 15m Direct',
-    season: 'Nov – April',
-    highlights: [
-      '✦ Private Overwater Pool Villa with Butler',
-      '✦ Sunset Dolphin Cruise & Sandbank Dinner',
-      '✦ Complimentary Seaplane Lounge Access'
-    ]
-  },
-  dubai: {
-    title: 'Dubai & Palm Jumeirah',
-    shortLabel: 'Dubai',
-    lat: 25.1124,
-    lng: 55.1390,
-    zoom: 9,
-    region: 'MIDDLE EAST • ULTRA LUXURY',
-    price: '₹1,45,000',
-    img: '/images/hero_palm.png',
-    desc: 'Experience the pinnacle of Arabian glamour with suites on Palm Jumeirah, private Marina yacht charters, and royal desert stargazing.',
-    flight: '~3h 45m Direct',
-    season: 'Oct – April',
-    highlights: [
-      '✦ 5-Star Atlantis / Palm Jumeirah Suite Stay',
-      '✦ Private Sunset Yacht Charter at Dubai Marina',
-      '✦ VIP Royal Desert Safari & Private Dining'
-    ]
-  },
-  switzerland: {
-    title: 'Swiss Alps & Lucerne',
-    shortLabel: 'Swiss Alps',
-    lat: 46.5979,
-    lng: 7.9079,
-    zoom: 7,
-    region: 'EUROPE • ALPINE GRANDEUR',
-    price: '₹3,20,000',
-    img: '/images/generated/swiss_alps_1781630479845.png',
-    desc: 'Glide across snow-kissed peaks aboard the Glacier Express Excellence Class and unwind in 5-star alpine chalets overlooking the Matterhorn.',
-    flight: '~8h 30m Direct',
-    season: 'May – Sep / Dec – Mar',
-    highlights: [
-      '✦ First-Class Swiss Travel Pass & Scenic Trains',
-      '✦ Private Helicopter Glacier Tour in Zermatt',
-      '✦ 5-Star Lakefront Suite in Lucerne & Interlaken'
-    ]
-  },
-  london: {
-    title: 'London & Royal UK',
-    shortLabel: 'London',
-    lat: 51.5007,
-    lng: -0.1246,
-    zoom: 9,
-    region: 'EUROPE • HERITAGE LUXURY',
-    price: '₹2,95,000',
-    img: '/images/hero_bigben.png',
-    desc: 'Stay in iconic Mayfair luxury hotels, enjoy private after-hours access to royal landmarks, and savour Michelin-starred afternoon teas.',
-    flight: '~9h 10m Direct',
-    season: 'April – October',
-    highlights: [
-      '✦ 5-Star Mayfair & Westminster Boutique Stays',
-      '✦ Chauffeur-Driven Cotswolds & Windsor Excursion',
-      '✦ Private Thames Evening Champagne Cruise'
-    ]
-  },
-  paris: {
-    title: 'Paris & French Riviera',
-    shortLabel: 'Paris',
-    lat: 48.8584,
-    lng: 2.2945,
-    zoom: 9,
-    region: 'EUROPE • ROMANCE & HAUTE COUTURE',
-    price: '₹2,80,000',
-    img: '/images/generated/paris_eiffel_1781630518608.png',
-    desc: 'Indulge in Eiffel Tower terrace suites, private Louvre art curation, and day trips to historic estates in the Champagne valley.',
-    flight: '~8h 50m Direct',
-    season: 'April – October',
-    highlights: [
-      '✦ Suite with Private Eiffel Tower Balcony View',
-      '✦ Skip-the-Line Private Louvre & Versailles Tour',
-      '✦ Michelin-Starred Seine River Dinner Cruise'
-    ]
-  },
-  singapore: {
-    title: 'Singapore Marina Bay',
-    shortLabel: 'Singapore',
-    lat: 1.2834,
-    lng: 103.8607,
-    zoom: 10,
-    region: 'SOUTHEAST ASIA • URBAN OASIS',
-    price: '₹1,55,000',
-    img: '/images/hero_singapore.png',
-    desc: 'From the iconic Marina Bay infinity pool to private Sentosa island villas and world-renowned botanical conservatories.',
-    flight: '~5h 30m Direct',
-    season: 'Year-Round',
-    highlights: [
-      '✦ Iconic Marina Bay Sands / Raffles Luxury Stay',
-      '✦ Private Buggy Tour at Night Safari & Gardens',
-      '✦ Sentosa Cove VIP Yacht & Beach Club Access'
-    ]
-  },
-  goa: {
-    title: 'South Goa Private Villas',
-    shortLabel: 'Goa',
-    lat: 15.2993,
-    lng: 74.1240,
-    zoom: 8,
-    region: 'INDIA • COASTAL SERENITY',
-    price: '₹85,000',
-    img: '/images/hero_goa.png',
-    desc: 'Escape to secluded beachfront estates in South Goa with private infinity pools, personal chefs, and sunset catamarans.',
-    flight: '~2h 15m Domestic',
-    season: 'Oct – March',
-    highlights: [
-      '✦ 5-Star Beachfront Resort or Private Pool Villa',
-      '✦ Private Mandovi Sunset Yacht with Live Grill',
-      '✦ Chauffeur-Driven Portuguese Heritage Trail'
-    ]
-  },
-  bali: {
-    title: 'Bali Ubud & Uluwatu',
-    shortLabel: 'Bali',
-    lat: -8.4095,
-    lng: 115.1889,
-    zoom: 8,
-    region: 'INDONESIA • TROPICAL SANCTUARY',
-    price: '₹1,35,000',
-    img: '/images/generated/bali_rice_terraces_1781630538897.png',
-    desc: 'Immerse yourself in Ubud rainforest infinity villas and dramatic Uluwatu cliffside resorts with bespoke Balinese spa rituals.',
-    flight: '~6h 45m',
-    season: 'April – October',
-    highlights: [
-      '✦ Private Heated Infinity Pool Villa in Ubud',
-      '✦ Nusa Penida Speedboat & Helicopter Coastal Tour',
-      '✦ Cliffside Sunset Kecak & Seafood Degustation'
-    ]
-  },
-  kashmir: {
-    title: 'Kashmir Dal Lake & Gulmarg',
-    shortLabel: 'Kashmir',
-    lat: 34.0837,
-    lng: 74.7973,
-    zoom: 8,
-    region: 'INDIA • HIMALAYAN PARADISE',
-    price: '₹95,000',
-    img: '/images/generated/srinagar_dal_lake_1781630414577.png',
-    desc: 'Experience royal Kashmiri hospitality in heritage luxury houseboats on Dal Lake and 5-star ski & golf resorts in Gulmarg.',
-    flight: '~2h 00m Domestic',
-    season: 'March – Nov / Dec – Feb',
-    highlights: [
-      '✦ Heritage Luxury Houseboat & Khyber Resort Stay',
-      '✦ Private Shikara Sunset Ride with Kahwa Service',
-      '✦ VIP Gondola Phase-2 & Pahalgam Valley Excursion'
-    ]
-  },
-  jaipur: {
-    title: 'Royal Jaipur & Udaipur Palaces',
-    shortLabel: 'Jaipur',
-    lat: 26.9124,
-    lng: 75.7873,
-    zoom: 7,
-    region: 'INDIA • ROYAL HERITAGE',
-    price: '₹1,10,000',
-    img: '/images/generated/jaipur_palace_1781625768904.png',
-    desc: 'Live like royalty in authentic Rajasthan palace hotels with private vintage car transfers, fort dining, and Lake Pichola boat arrivals.',
-    flight: '~1h 30m Domestic',
-    season: 'Oct – March',
-    highlights: [
-      '✦ Royal Palace Suites in Jaipur & Udaipur',
-      '✦ Private Hot Air Balloon Safari Over Amber Fort',
-      '✦ Candlelit Lake Pichola Boat & Folk Performance'
-    ]
-  }
+const DEST_COORDS = {
+  // 25 Domestic Destinations (India)
+  goa:         { lat: 15.2993, lng: 74.1240, zoom: 8, season: 'Oct – March' },
+  kerala:      { lat: 9.4981,  lng: 76.3388, zoom: 8, season: 'Sep – March' },
+  jaipur:      { lat: 26.9124, lng: 75.7873, zoom: 8, season: 'Oct – March' },
+  ladakh:      { lat: 34.1526, lng: 77.5771, zoom: 7, season: 'May – September' },
+  agra:        { lat: 27.1751, lng: 78.0421, zoom: 8, season: 'Oct – March' },
+  manali:      { lat: 32.2432, lng: 77.1892, zoom: 8, season: 'Oct – June' },
+  munnar:      { lat: 10.0889, lng: 77.0595, zoom: 9, season: 'Sep – May' },
+  spiti:       { lat: 32.2461, lng: 78.0349, zoom: 8, season: 'May – October' },
+  varanasi:    { lat: 25.3176, lng: 82.9739, zoom: 8, season: 'Oct – March' },
+  andaman:     { lat: 11.7401, lng: 92.6586, zoom: 7, season: 'Oct – May' },
+  udaipur:     { lat: 24.5854, lng: 73.7125, zoom: 8, season: 'Oct – March' },
+  darjeeling:  { lat: 27.0410, lng: 88.2663, zoom: 8, season: 'March – Jun / Oct – Dec' },
+  ooty:        { lat: 11.4102, lng: 76.6950, zoom: 9, season: 'Oct – June' },
+  mysore:      { lat: 12.2958, lng: 76.6394, zoom: 8, season: 'Oct – March' },
+  hampi:       { lat: 15.3350, lng: 76.4600, zoom: 8, season: 'Oct – February' },
+  pondicherry: { lat: 11.9416, lng: 79.8083, zoom: 9, season: 'Oct – March' },
+  gokarna:     { lat: 14.5479, lng: 74.3188, zoom: 9, season: 'Oct – March' },
+  srinagar:    { lat: 34.0837, lng: 74.7973, zoom: 8, season: 'March – November' },
+  leh:         { lat: 34.1642, lng: 77.5848, zoom: 8, season: 'May – September' },
+  ranthambore: { lat: 26.0173, lng: 76.5026, zoom: 8, season: 'Oct – June' },
+  shimla:      { lat: 31.1048, lng: 77.1734, zoom: 8, season: 'Year-Round' },
+  kolkata:     { lat: 22.5726, lng: 88.3639, zoom: 8, season: 'Oct – March' },
+  mumbai:      { lat: 19.0760, lng: 72.8777, zoom: 8, season: 'Nov – February' },
+  delhi:       { lat: 28.6139, lng: 77.2090, zoom: 8, season: 'Oct – March' },
+  hyderabad:   { lat: 17.3850, lng: 78.4867, zoom: 8, season: 'Oct – March' },
+
+  // 21 International Destinations
+  maldives:    { lat: 3.2028,   lng: 73.2207,   zoom: 6, season: 'Nov – April' },
+  swiss_alps:  { lat: 46.5979,  lng: 7.9079,    zoom: 7, season: 'May – Sep / Dec – Mar' },
+  dubai:       { lat: 25.1124,  lng: 55.1390,   zoom: 8, season: 'Oct – April' },
+  paris:       { lat: 48.8584,  lng: 2.2945,    zoom: 8, season: 'April – October' },
+  bali:        { lat: -8.4095,  lng: 115.1889,  zoom: 8, season: 'April – October' },
+  banff:       { lat: 51.1784,  lng: -115.5708, zoom: 7, season: 'June – Sep / Dec – Mar' },
+  turkey:      { lat: 38.6431,  lng: 34.8289,   zoom: 6, season: 'April – November' },
+  kyoto:       { lat: 35.0116,  lng: 135.7681,  zoom: 8, season: 'March – May / Oct – Nov' },
+  rome:        { lat: 41.8902,  lng: 12.4922,   zoom: 8, season: 'April – October' },
+  hawaii:      { lat: 21.3069,  lng: -157.8583, zoom: 7, season: 'Year-Round' },
+  phuket:      { lat: 7.8804,   lng: 98.3923,   zoom: 8, season: 'Nov – April' },
+  cape_town:   { lat: -33.9249, lng: 18.4241,   zoom: 8, season: 'Oct – April' },
+  mecca:       { lat: 21.4225,  lng: 39.8262,   zoom: 8, season: 'Year-Round (Umrah & Ziyarat)' },
+  venice:      { lat: 45.4408,  lng: 12.3155,   zoom: 9, season: 'April – October' },
+  prague:      { lat: 50.0755,  lng: 14.4378,   zoom: 8, season: 'April – October' },
+  london:      { lat: 51.5007,  lng: -0.1246,   zoom: 8, season: 'April – October' },
+  malaysia:    { lat: 3.1390,   lng: 101.6869,  zoom: 7, season: 'Year-Round' },
+  singapore:   { lat: 1.2834,   lng: 103.8607,  zoom: 10, season: 'Year-Round' },
+  indonesia:   { lat: -7.7956,  lng: 110.3695,  zoom: 6, season: 'April – October' },
+  bangkok:     { lat: 13.7563,  lng: 100.5018,  zoom: 8, season: 'Nov – April' },
+  egypt:       { lat: 29.9792,  lng: 31.1342,   zoom: 6, season: 'Oct – April' }
 };
 
 function initWorldExplorer() {
   const mapEl = document.getElementById('luxuryWorldMap');
-  const pills = document.querySelectorAll('.explorer-pill');
-  if (!mapEl && !pills.length) return;
+  const pillsContainer = document.getElementById('explorerPills');
+  const regionTabBtns = document.querySelectorAll('.exp-tab-btn');
+  const searchInput = document.getElementById('mapHubSearch');
+  const counterLabel = document.getElementById('mapCounterLabel');
+
+  if (!mapEl && !pillsContainer) return;
+
+  // Build full list of all 46 destinations from travelData.destinations
+  const allMapDestinations = (travelData.destinations || []).map(dest => {
+    const coord = DEST_COORDS[dest.id] || { lat: 20.5937, lng: 78.9629, zoom: 6, season: 'Oct – April' };
+    const nights = Math.max(1, (dest.days || 5) - 1);
+    const formattedPrice = '₹' + (dest.price || 45000).toLocaleString('en-IN');
+    return {
+      ...dest,
+      lat: coord.lat,
+      lng: coord.lng,
+      zoom: coord.zoom || 7,
+      season: coord.season || 'Oct – April',
+      formattedPrice,
+      durationLabel: `${dest.days || 5} Days / ${nights} ${nights === 1 ? 'Night' : 'Nights'}`,
+      regionLabel: `${dest.location === 'domestic' ? 'INDIA DOMESTIC' : 'INTERNATIONAL'} • ${(dest.tag || 'LUXURY').toUpperCase()}`,
+      highlights: [
+        `✦ 3-Star, 4-Star & 5-Star Hotels Available in ${dest.name}`,
+        `✦ Private Airport Transfers & Guided ${dest.tag || 'Sightseeing'} Tours`,
+        `✦ 24/7 Holiday Planner Concierge & Custom Itinerary`
+      ]
+    };
+  });
 
   let mapInstance = null;
   let tileLayer = null;
   let isSatellite = false;
-  const markersByHub = {};
+  let activeId = 'maldives';
+  let currentRegionFilter = 'all';
+  const markersById = {};
 
-  // 100% Free, No-API-Key, English-labeled Global Atlas & Satellite Tiles
   const ATLAS_TILES = 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}';
   const SATELLITE_TILES = 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}';
 
@@ -646,35 +542,65 @@ function initWorldExplorer() {
           <span class="lux-pin-tag">${label}</span>
         </div>
       `,
-      iconSize: [80, 42],
-      iconAnchor: [40, 14]
+      iconSize: [90, 42],
+      iconAnchor: [45, 14],
+      popupAnchor: [0, -14]
     });
   }
 
-  function selectHub(hubKey, shouldFly = true) {
-    const data = EXPLORER_HUBS[hubKey];
+  function createPopupHTML(dest) {
+    return `
+      <div class="lux-popup-card">
+        <img src="${dest.img}" alt="${dest.name}" onerror="this.onerror=null;this.src='/images/hero_slide_1.png';">
+        <div class="lux-popup-info">
+          <span class="lux-popup-tag">${dest.location === 'domestic' ? '🇮🇳 India' : '✈️ International'} • ${dest.tag}</span>
+          <h4>${dest.name}</h4>
+          <div class="lux-popup-meta">
+            <span>${dest.durationLabel}</span>
+            <span style="color:#ff007b;">${dest.formattedPrice}</span>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  function selectDestination(destId, shouldFly = true) {
+    const data = allMapDestinations.find(d => d.id === destId) || allMapDestinations[0];
     if (!data) return;
+    activeId = data.id;
 
-    pills.forEach(p => p.classList.toggle('active', p.dataset.hub === hubKey));
+    // Highlight active pill
+    if (pillsContainer) {
+      pillsContainer.querySelectorAll('.explorer-pill').forEach(p => {
+        p.classList.toggle('active', p.dataset.hub === activeId);
+      });
+    }
 
-    // Update marker active states
+    // Update marker icons & fly to destination
     if (window.L && mapInstance) {
-      Object.keys(markersByHub).forEach(k => {
-        const h = EXPLORER_HUBS[k];
-        markersByHub[k].setIcon(createPinIcon(h.shortLabel, k === hubKey));
+      allMapDestinations.forEach(d => {
+        const m = markersById[d.id];
+        if (m) {
+          m.setIcon(createPinIcon(d.name, d.id === activeId));
+        }
       });
       if (shouldFly) {
-        mapInstance.flyTo([data.lat, data.lng], data.zoom || 6, {
+        mapInstance.flyTo([data.lat, data.lng], data.zoom || 7, {
           animate: true,
-          duration: 1.2
+          duration: 1.1
         });
+        if (markersById[data.id]) {
+          markersById[data.id].openPopup();
+        }
       }
     }
 
+    // Update Spotlight Card
     const spotImg = document.getElementById('spotImg');
     const spotRegion = document.getElementById('spotRegion');
     const spotTitle = document.getElementById('spotTitle');
     const spotPrice = document.getElementById('spotPrice');
+    const spotDaysLabel = document.getElementById('spotDaysLabel');
     const spotDesc = document.getElementById('spotDesc');
     const spotFlight = document.getElementById('spotFlight');
     const spotSeason = document.getElementById('spotSeason');
@@ -684,30 +610,70 @@ function initWorldExplorer() {
 
     if (spotImg) {
       spotImg.src = data.img;
-      spotImg.alt = data.title;
+      spotImg.alt = data.name;
     }
-    if (spotRegion) spotRegion.textContent = data.region;
-    if (spotTitle) spotTitle.textContent = data.title;
-    if (spotPrice) spotPrice.textContent = data.price;
+    if (spotRegion) spotRegion.textContent = data.regionLabel;
+    if (spotTitle) spotTitle.textContent = data.name;
+    if (spotPrice) spotPrice.textContent = data.formattedPrice;
+    if (spotDaysLabel) spotDaysLabel.textContent = data.durationLabel;
     if (spotDesc) spotDesc.textContent = data.desc;
-    if (spotFlight) spotFlight.textContent = data.flight;
+    if (spotFlight) spotFlight.textContent = data.durationLabel;
     if (spotSeason) spotSeason.textContent = data.season;
     if (spotHighlights) {
       spotHighlights.innerHTML = data.highlights.map(item => `<li>${item}</li>`).join('');
     }
     if (spotPlanBtn) {
-      spotPlanBtn.href = `inquiry.html?dest=${encodeURIComponent(data.title)}`;
+      spotPlanBtn.href = `inquiry.html?dest=${encodeURIComponent(data.name)}&nights=${Math.max(1, (data.days || 5) - 1)}`;
     }
     if (spotWaBtn) {
-      const msg = `Hello Holiday Planner! I am interested in your ${data.title} package (starting ${data.price}/couple). Please share a custom itinerary!`;
+      const msg = `Hello Holiday Planner! I am exploring ${data.name} (${data.durationLabel}, starting ${data.formattedPrice}) on your interactive map. Please share 3-Star, 4-Star, and 5-Star package options!`;
       spotWaBtn.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
+    }
+  }
+
+  function renderPillsAndMarkers() {
+    const query = (searchInput ? searchInput.value : '').trim().toLowerCase();
+    const filtered = allMapDestinations.filter(d => {
+      const matchesRegion = currentRegionFilter === 'all' || d.location === currentRegionFilter;
+      const matchesQuery = !query || d.name.toLowerCase().includes(query) || (d.tag && d.tag.toLowerCase().includes(query));
+      return matchesRegion && matchesQuery;
+    });
+
+    if (counterLabel) {
+      counterLabel.textContent = `Showing ${filtered.length} destination${filtered.length === 1 ? '' : 's'} — Click any pin for photo & details`;
+    }
+
+    if (pillsContainer) {
+      pillsContainer.innerHTML = filtered.map(d => `
+        <button type="button" class="explorer-pill ${d.id === activeId ? 'active' : ''}" data-hub="${d.id}">
+          <img src="${d.img}" alt="${d.name}" loading="lazy" onerror="this.onerror=null;this.src='/images/hero_slide_1.png';">
+          <span>${d.name}</span>
+        </button>
+      `).join('');
+
+      pillsContainer.querySelectorAll('.explorer-pill').forEach(pill => {
+        pill.addEventListener('click', () => selectDestination(pill.dataset.hub, true));
+      });
+    }
+
+    if (window.L && mapInstance) {
+      const visibleIds = new Set(filtered.map(d => d.id));
+      allMapDestinations.forEach(d => {
+        const marker = markersById[d.id];
+        if (!marker) return;
+        if (visibleIds.has(d.id)) {
+          if (!mapInstance.hasLayer(marker)) marker.addTo(mapInstance);
+        } else {
+          if (mapInstance.hasLayer(marker)) mapInstance.removeLayer(marker);
+        }
+      });
     }
   }
 
   // Initialize Real Leaflet Map if available
   if (mapEl && window.L) {
     mapInstance = window.L.map(mapEl, {
-      center: [22.0, 58.0],
+      center: [22.0, 65.0],
       zoom: 3,
       minZoom: 2,
       maxZoom: 16,
@@ -719,29 +685,36 @@ function initWorldExplorer() {
       maxZoom: 18
     }).addTo(mapInstance);
 
-    // Add markers for all hubs
-    Object.keys(EXPLORER_HUBS).forEach(key => {
-      const hub = EXPLORER_HUBS[key];
-      const marker = window.L.marker([hub.lat, hub.lng], {
-        icon: createPinIcon(hub.shortLabel, key === 'maldives')
+    // Plot all 46 destinations on the map
+    allMapDestinations.forEach(dest => {
+      const marker = window.L.marker([dest.lat, dest.lng], {
+        icon: createPinIcon(dest.name, dest.id === activeId)
       }).addTo(mapInstance);
 
-      marker.on('click', () => selectHub(key, true));
-      markersByHub[key] = marker;
+      marker.bindPopup(createPopupHTML(dest), { maxWidth: 230, closeButton: false });
+      marker.on('click', () => selectDestination(dest.id, true));
+      markersById[dest.id] = marker;
     });
+
+    // Zoom India button
+    const indiaBtn = document.getElementById('mapIndiaBtn');
+    if (indiaBtn) {
+      indiaBtn.addEventListener('click', () => {
+        mapInstance.flyTo([22.5, 79.0], 5, { animate: true, duration: 1.0 });
+      });
+    }
 
     // Reset World View button
     const resetBtn = document.getElementById('mapResetBtn');
     if (resetBtn) {
       resetBtn.addEventListener('click', () => {
-        mapInstance.flyTo([22.0, 58.0], 3, { animate: true, duration: 1.1 });
+        mapInstance.flyTo([22.0, 65.0], 3, { animate: true, duration: 1.0 });
       });
     }
 
     // Atlas / Satellite View Toggle button
     const themeBtn = document.getElementById('mapThemeBtn');
     if (themeBtn) {
-      themeBtn.textContent = '🛰️ Satellite View';
       themeBtn.addEventListener('click', () => {
         isSatellite = !isSatellite;
         tileLayer.setUrl(isSatellite ? SATELLITE_TILES : ATLAS_TILES);
@@ -754,15 +727,41 @@ function initWorldExplorer() {
     }, 400);
   }
 
-  pills.forEach(pill => {
-    pill.addEventListener('click', () => selectHub(pill.dataset.hub, true));
+  // Region Filter Tabs (All 46 / Domestic 25 / International 21)
+  regionTabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      regionTabBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentRegionFilter = btn.getAttribute('data-region') || 'all';
+      renderPillsAndMarkers();
+      if (mapInstance) {
+        if (currentRegionFilter === 'domestic') {
+          mapInstance.flyTo([22.5, 79.0], 5, { animate: true, duration: 1.0 });
+        } else {
+          mapInstance.flyTo([22.0, 65.0], 3, { animate: true, duration: 1.0 });
+        }
+      }
+    });
   });
 
-  selectHub('maldives', false);
+  if (searchInput) {
+    searchInput.addEventListener('input', () => {
+      renderPillsAndMarkers();
+      const q = searchInput.value.trim().toLowerCase();
+      if (q.length >= 2) {
+        const firstMatch = allMapDestinations.find(d => d.name.toLowerCase().includes(q));
+        if (firstMatch) selectDestination(firstMatch.id, true);
+      }
+    });
+  }
+
+  renderPillsAndMarkers();
+  selectDestination('maldives', false);
 }
 
 // =========================================================
 // FEATURE 2: INTERACTIVE TRIP BUDGET ESTIMATOR WITH SEARCH
+// (Supports 1-Night Min Duration & 3-Star / 4-Star / 5-Star / VIP)
 // =========================================================
 function initBudgetEstimator() {
   const searchInput = document.getElementById('estDestSearch');
@@ -776,67 +775,74 @@ function initBudgetEstimator() {
 
   if (!searchInput || !nightsSlider || !travelersSlider) return;
 
-  // Build comprehensive searchable destination catalog from curated hubs + travelData.destinations
-  const CURATED_CATALOG = [
-    { name: 'Maldives — Overwater Villa Escape', short: 'Maldives', region: 'International • Indian Ocean', base: 32000 },
-    { name: 'Dubai — Palm Jumeirah & Royal Desert', short: 'Dubai', region: 'International • Middle East', base: 24000 },
-    { name: 'Switzerland & Europe — Alpine Luxury', short: 'Switzerland', region: 'International • Europe', base: 42000 },
-    { name: 'Paris & French Riviera', short: 'Paris', region: 'International • Europe', base: 38000 },
-    { name: 'London & UK Royal Heritage', short: 'London', region: 'International • Europe', base: 40000 },
-    { name: 'Singapore — Marina Bay & Sentosa VIP', short: 'Singapore', region: 'International • SE Asia', base: 26000 },
-    { name: 'Bali — Ubud & Cliffside Pool Villas', short: 'Bali', region: 'International • Indonesia', base: 20000 },
-    { name: 'Bangkok & Phuket Luxury Escape', short: 'Thailand', region: 'International • SE Asia', base: 18000 },
-    { name: 'Malaysia — Kuala Lumpur & Langkawi', short: 'Malaysia', region: 'International • SE Asia', base: 19000 },
-    { name: 'Tokyo & Kyoto Bespoke Japan', short: 'Japan', region: 'International • East Asia', base: 38000 },
-    { name: 'Santorini & Mykonos Private Villas', short: 'Greece', region: 'International • Europe', base: 39000 },
-    { name: 'Amalfi Coast, Rome & Venice', short: 'Italy', region: 'International • Europe', base: 38000 },
-    { name: 'Kashmir — Srinagar Houseboat & Gulmarg', short: 'Kashmir', region: 'Domestic • India', base: 15000 },
-    { name: 'Goa — Private Beachfront Villa & Yacht', short: 'Goa', region: 'Domestic • India', base: 14000 },
-    { name: 'Royal Rajasthan — Jaipur & Udaipur Palaces', short: 'Rajasthan', region: 'Domestic • India', base: 18000 },
-    { name: 'Kerala Backwaters & Munnar Luxury', short: 'Kerala', region: 'Domestic • India', base: 15000 },
-    { name: 'Andaman Islands — Havelock Beach Resort', short: 'Andaman', region: 'Domestic • India', base: 16500 },
-    { name: 'Ladakh & Leh Luxury Glamping', short: 'Ladakh', region: 'Domestic • India', base: 16000 },
-    { name: 'Manali & Shimla Himalayan Retreat', short: 'Himachal', region: 'Domestic • India', base: 13500 }
-  ];
+  // Build searchable destination catalog from all 46 destinations in travelData.destinations + extra hubs
+  const CURATED_CATALOG = [];
+  const seenNames = new Set();
 
-  // Merge additional unique destinations from travelData.destinations
-  const seenNames = new Set(CURATED_CATALOG.map(c => c.short.toLowerCase()));
   if (travelData && Array.isArray(travelData.destinations)) {
     travelData.destinations.forEach(d => {
       const cleanKey = d.name.toLowerCase();
       if (!seenNames.has(cleanKey)) {
         seenNames.add(cleanKey);
-        const perNight = d.price && d.days ? Math.max(9000, Math.round(d.price / d.days)) : (d.location === 'domestic' ? 14000 : 26000);
+        const nights = Math.max(1, (d.days || 5) - 1);
+        const perNight = d.price ? Math.max(5500, Math.round(d.price / nights)) : (d.location === 'domestic' ? 9500 : 24000);
         CURATED_CATALOG.push({
-          name: `${d.name} (${d.tag || 'Luxury'})`,
+          name: d.name,
           short: d.name,
-          region: d.location === 'domestic' ? 'Domestic • India' : 'International',
-          base: perNight
+          region: `${d.location === 'domestic' ? '🇮🇳 Domestic • India' : '✈️ International'} • ${d.tag || 'Luxury'}`,
+          base: perNight,
+          img: d.img
         });
       }
     });
   }
 
-  let currentDestName = 'Maldives — Overwater Villa Escape';
+  let currentDestName = 'Maldives';
   let currentBaseRate = 32000;
   let currentTier = 'signature';
   let currentMult = 1;
 
-  const TIER_INCLUDES = {
-    signature: [
-      '✓ Handpicked 5-Star Luxury Accommodations',
-      '✓ Daily Gourmet Breakfast & Welcome Dinner',
-      '✓ Private Chauffeur Airport & Local Transfers',
-      '✓ Curated Skip-the-Line Experiences',
-      '✓ 24/7 Dedicated Holiday Planner Concierge'
-    ],
-    vip: [
-      '👑 Private Pool Villas / Presidential Suites',
-      '👑 Chauffeur-Driven Luxury SUV Throughout Trip',
-      '👑 Private Yacht Charter / Scenic Helicopter Experience',
-      '👑 Fine-Dining Degustation & Personal Butler Service',
-      '👑 VIP Fast-Track Airport Meet & Greet'
-    ]
+  const TIER_CONFIG = {
+    '3star': {
+      label: '3-Star Comfort',
+      includes: [
+        '✓ Verified Clean & Comfortable 3-Star Hotels',
+        '✓ Daily Complimentary Breakfast Included',
+        '✓ Standard AC Airport & Railway Transfers',
+        '✓ Major Local Sightseeing & Tour Coordination',
+        '✓ 24/7 Holiday Planner Support Helpline'
+      ]
+    },
+    '4star': {
+      label: '4-Star Premium',
+      includes: [
+        '✓ Handpicked 4-Star Deluxe Hotels & Resorts',
+        '✓ Daily Buffet Breakfast & Welcome Drinks',
+        '✓ Private AC Sedan / SUV Transfers & Sightseeing',
+        '✓ Guided City Tours & Priority Entry Tickets',
+        '✓ Dedicated Holiday Planner Trip Coordinator'
+      ]
+    },
+    'signature': {
+      label: '5-Star Luxury',
+      includes: [
+        '✓ Handpicked 5-Star Luxury Accommodations',
+        '✓ Daily Gourmet Breakfast & Welcome Dinner',
+        '✓ Private Chauffeur Airport & Local Transfers',
+        '✓ Curated Skip-the-Line Experiences',
+        '✓ 24/7 Dedicated Holiday Planner Concierge'
+      ]
+    },
+    'vip': {
+      label: 'Ultra-Bespoke VIP',
+      includes: [
+        '👑 Private Pool Villas / Presidential Suites',
+        '👑 Chauffeur-Driven Luxury SUV Throughout Trip',
+        '👑 Private Yacht Charter / Scenic Helicopter Experience',
+        '👑 Fine-Dining Degustation & Personal Butler Service',
+        '👑 VIP Fast-Track Airport Meet & Greet'
+      ]
+    }
   };
 
   function formatINR(num) {
@@ -850,13 +856,12 @@ function initBudgetEstimator() {
     );
     if (match) return { name: match.name, short: match.short, base: match.base };
 
-    // Smart fallback for any custom typed destination
-    const domesticKeywords = ['india', 'goa', 'kashmir', 'jaipur', 'udaipur', 'kerala', 'shimla', 'manali', 'agra', 'varanasi', 'rishikesh', 'ooty', 'munnar', 'darjeeling', 'andaman', 'coorg', 'ladakh'];
+    const domesticKeywords = ['india', 'goa', 'kashmir', 'jaipur', 'udaipur', 'kerala', 'shimla', 'manali', 'agra', 'varanasi', 'rishikesh', 'ooty', 'munnar', 'darjeeling', 'andaman', 'coorg', 'ladakh', 'prayagraj', 'delhi', 'mumbai', 'kolkata', 'hyderabad'];
     const isDom = domesticKeywords.some(k => q.includes(k));
     return {
-      name: query.trim() || 'Custom Luxury Destination',
+      name: query.trim() || 'Custom Destination',
       short: query.trim() || 'Custom',
-      base: isDom ? 15000 : 28000
+      base: isDom ? 10500 : 25000
     };
   }
 
@@ -864,15 +869,15 @@ function initBudgetEstimator() {
     if (!dropdown) return;
     const q = filterText.trim().toLowerCase();
     const matches = CURATED_CATALOG.filter(item =>
-      !q || item.name.toLowerCase().includes(q) || item.short.toLowerCase().includes(q) || item.region.toLowerCase().includes(q)
-    ).slice(0, 12);
+      !q || item.name.toLowerCase().includes(q) || item.region.toLowerCase().includes(q)
+    ).slice(0, 15);
 
     if (matches.length === 0 && q) {
       dropdown.innerHTML = `
-        <div class="est-dropdown-item" data-name="${filterText.trim()}" data-short="${filterText.trim()}" data-base="26000">
+        <div class="est-dropdown-item" data-name="${filterText.trim()}" data-short="${filterText.trim()}" data-base="22000">
           <div class="est-dd-left">
             <span class="est-dd-name">✨ Plan Custom Trip to "${filterText.trim()}"</span>
-            <span class="est-dd-sub">Click to calculate bespoke estimate for ${filterText.trim()}</span>
+            <span class="est-dd-sub">Click to calculate estimate for ${filterText.trim()}</span>
           </div>
           <span class="est-dd-tag">Custom</span>
         </div>
@@ -884,7 +889,7 @@ function initBudgetEstimator() {
             <span class="est-dd-name">${item.name}</span>
             <span class="est-dd-sub">${item.region}</span>
           </div>
-          <span class="est-dd-tag">${formatINR(item.base)}/night</span>
+          <span class="est-dd-tag">From ${formatINR(Math.round(item.base * 0.55))}/night</span>
         </div>
       `).join('');
     }
@@ -892,14 +897,14 @@ function initBudgetEstimator() {
     dropdown.querySelectorAll('.est-dropdown-item').forEach(el => {
       el.addEventListener('click', () => {
         currentDestName = el.getAttribute('data-name');
-        currentBaseRate = parseFloat(el.getAttribute('data-base')) || 25000;
+        currentBaseRate = parseFloat(el.getAttribute('data-base')) || 22000;
         const shortLabel = el.getAttribute('data-short') || currentDestName;
         searchInput.value = currentDestName;
         if (selectedBadge) selectedBadge.textContent = `📍 ${shortLabel}`;
         dropdown.classList.remove('open');
 
         quickChips.forEach(c => {
-          c.classList.toggle('active', c.getAttribute('data-dest') === currentDestName);
+          c.classList.toggle('active', c.getAttribute('data-dest').toLowerCase() === currentDestName.toLowerCase());
         });
         updateEstimate();
       });
@@ -907,11 +912,14 @@ function initBudgetEstimator() {
   }
 
   function updateEstimate() {
-    const nights = parseInt(nightsSlider.value, 10) || 5;
+    const nights = parseInt(nightsSlider.value, 10) || 1;
     const travelers = parseInt(travelersSlider.value, 10) || 2;
 
     const nightsDisplay = document.getElementById('estNightsDisplay');
-    if (nightsDisplay) nightsDisplay.textContent = `${nights} Nights / ${nights + 1} Days`;
+    if (nightsDisplay) {
+      const nightWord = nights === 1 ? 'Night' : 'Nights';
+      nightsDisplay.textContent = `${nights} ${nightWord} / ${nights + 1} Days`;
+    }
 
     const travelersDisplay = document.getElementById('estTravelersDisplay');
     if (travelersDisplay) {
@@ -923,13 +931,13 @@ function initBudgetEstimator() {
       travelersDisplay.textContent = `${travelers} ${suffix}`;
     }
 
-    const groupFactor = travelers === 1 ? 1.25 : (travelers > 2 ? 0.92 : 1.0);
+    const groupFactor = travelers === 1 ? 1.2 : (travelers > 2 ? 0.9 : 1.0);
     const rawPerPerson = currentBaseRate * nights * currentMult * groupFactor;
     const rawTotal = rawPerPerson * travelers;
 
-    const lowEst = Math.round((rawTotal * 0.9) / 5000) * 5000;
-    const highEst = Math.round((rawTotal * 1.1) / 5000) * 5000;
-    const perPersonEst = Math.round((rawPerPerson) / 1000) * 1000;
+    const lowEst = Math.max(4000, Math.round((rawTotal * 0.9) / 1000) * 1000);
+    const highEst = Math.max(6000, Math.round((rawTotal * 1.1) / 1000) * 1000);
+    const perPersonEst = Math.max(2500, Math.round(rawPerPerson / 500) * 500);
 
     const totalRangeEl = document.getElementById('estTotalRange');
     const perPersonEl = document.getElementById('estPerPerson');
@@ -938,11 +946,13 @@ function initBudgetEstimator() {
     const rangeText = `${formatINR(lowEst)} – ${formatINR(highEst)}`;
     if (totalRangeEl) totalRangeEl.textContent = rangeText;
     if (perPersonEl) {
-      perPersonEl.textContent = `Approx. ${formatINR(perPersonEst)} per person for ${nights} nights`;
+      const nightWord = nights === 1 ? 'night' : 'nights';
+      perPersonEl.textContent = `Approx. ${formatINR(perPersonEst)} per person for ${nights} ${nightWord}`;
     }
 
-    if (includesListEl && TIER_INCLUDES[currentTier]) {
-      includesListEl.innerHTML = TIER_INCLUDES[currentTier].map(i => `<li>${i}</li>`).join('');
+    const activeTierCfg = TIER_CONFIG[currentTier] || TIER_CONFIG['signature'];
+    if (includesListEl) {
+      includesListEl.innerHTML = activeTierCfg.includes.map(i => `<li>${i}</li>`).join('');
     }
 
     let budgetCode = '2L-5L';
@@ -953,7 +963,7 @@ function initBudgetEstimator() {
     else if (highEst <= 3000000) budgetCode = '20L-30L';
     else budgetCode = '30L+';
 
-    const tierLabel = currentTier === 'vip' ? 'Ultra-Bespoke VIP' : '5-Star Signature';
+    const tierLabel = activeTierCfg.label;
 
     const lockBtn = document.getElementById('estLockBtn');
     if (lockBtn) {
@@ -970,11 +980,12 @@ function initBudgetEstimator() {
 
     const waBtn = document.getElementById('estWaBtn');
     if (waBtn) {
+      const nightWord = nights === 1 ? 'Night' : 'Nights';
       const waMsg = `Hello Holiday Planner! I used your Trip Budget Estimator:\n` +
         `• Destination: ${currentDestName}\n` +
-        `• Duration: ${nights} Nights / ${nights + 1} Days\n` +
+        `• Duration: ${nights} ${nightWord} / ${nights + 1} Days\n` +
         `• Travelers: ${travelers} Guests\n` +
-        `• Style: ${tierLabel}\n` +
+        `• Hotel Category: ${tierLabel}\n` +
         `• Estimated Budget: ${rangeText}\n\n` +
         `Please help me customize and book this itinerary!`;
       waBtn.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(waMsg)}`;
@@ -983,7 +994,7 @@ function initBudgetEstimator() {
 
   // Search Input Events
   searchInput.addEventListener('focus', () => {
-    renderDropdown(searchInput.value === 'Maldives — Overwater Villa Escape' ? '' : searchInput.value);
+    renderDropdown(searchInput.value === 'Maldives' ? '' : searchInput.value);
     if (dropdown) dropdown.classList.add('open');
   });
 
@@ -1022,7 +1033,7 @@ function initBudgetEstimator() {
       quickChips.forEach(c => c.classList.remove('active'));
       chip.classList.add('active');
       currentDestName = chip.getAttribute('data-dest');
-      currentBaseRate = parseFloat(chip.getAttribute('data-base')) || 25000;
+      currentBaseRate = parseFloat(chip.getAttribute('data-base')) || 22000;
       searchInput.value = currentDestName;
       if (selectedBadge) selectedBadge.textContent = `📍 ${chip.textContent}`;
       if (dropdown) dropdown.classList.remove('open');
@@ -1070,7 +1081,7 @@ function initInquiryPrefill() {
 
   const addInfoInput = document.getElementById('addInfo');
   if (addInfoInput && (tier || est)) {
-    addInfoInput.value = `Selected Tier: ${tier || '5-Star Signature'} | Estimated Budget Range: ${est || 'Custom'}`;
+    addInfoInput.value = `Selected Hotel Tier: ${tier || '5-Star Luxury'} | Estimated Budget Range: ${est || 'Custom'}`;
   }
 
   if (budget) {
@@ -1078,5 +1089,6 @@ function initInquiryPrefill() {
     if (budgetRadio) budgetRadio.checked = true;
   }
 }
+
 
 
