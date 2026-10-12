@@ -629,11 +629,12 @@ function initWorldExplorer() {
 
   let mapInstance = null;
   let tileLayer = null;
-  let isLightMap = false;
+  let isSatellite = false;
   const markersByHub = {};
 
-  const DARK_TILES = 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
-  const LIGHT_TILES = 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png';
+  // 100% Free, No-API-Key, English-labeled Global Atlas & Satellite Tiles
+  const ATLAS_TILES = 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}';
+  const SATELLITE_TILES = 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}';
 
   function createPinIcon(label, isActive) {
     return window.L.divIcon({
@@ -709,14 +710,13 @@ function initWorldExplorer() {
       center: [22.0, 58.0],
       zoom: 3,
       minZoom: 2,
-      maxZoom: 14,
+      maxZoom: 16,
       scrollWheelZoom: false
     });
 
-    tileLayer = window.L.tileLayer(DARK_TILES, {
-      attribution: '&copy; OpenStreetMap &copy; CARTO',
-      subdomains: 'abcd',
-      maxZoom: 19
+    tileLayer = window.L.tileLayer(ATLAS_TILES, {
+      attribution: '&copy; Esri &mdash; National Geographic, Esri, DeLorme, NAVTEQ',
+      maxZoom: 18
     }).addTo(mapInstance);
 
     // Add markers for all hubs
@@ -738,13 +738,14 @@ function initWorldExplorer() {
       });
     }
 
-    // Light / Dark Map Theme Toggle button
+    // Atlas / Satellite View Toggle button
     const themeBtn = document.getElementById('mapThemeBtn');
     if (themeBtn) {
+      themeBtn.textContent = '🛰️ Satellite View';
       themeBtn.addEventListener('click', () => {
-        isLightMap = !isLightMap;
-        tileLayer.setUrl(isLightMap ? LIGHT_TILES : DARK_TILES);
-        themeBtn.textContent = isLightMap ? '🌙 Dark Map' : '☀️ Light Map';
+        isSatellite = !isSatellite;
+        tileLayer.setUrl(isSatellite ? SATELLITE_TILES : ATLAS_TILES);
+        themeBtn.textContent = isSatellite ? '🗺️ Atlas View' : '🛰️ Satellite View';
       });
     }
 
