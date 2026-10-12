@@ -33,7 +33,7 @@ function initLoader() {
   setTimeout(() => {
     loader.classList.add('fade-out');
     document.body.classList.add('loaded');
-  }, 1200); // Wait 1.2s then fade out
+  }, 250);
 }
 
 function initNavigation() {
