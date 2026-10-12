@@ -100,7 +100,7 @@ body.loaded .hidden-initial { opacity: 1; transform: translateY(0); }
 
 /* === Header / Nav === */
 .header { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 20px 0; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); background: transparent; }
-.header.scrolled { padding: 15px 0; background: var(--glass-bg); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--glass-border); box-shadow: var(--glass-shadow); }
+.header.scrolled { padding: 12px 0; background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(0, 0, 0, 0.08); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06); }
 .nav-container { max-width: 1400px; margin: 0 auto; padding: 0 40px; display: flex; justify-content: space-between; align-items: center; }
 .logo { font-family: var(--font-display); font-size: 2.2rem; letter-spacing: 1px; font-weight: 400; color: var(--text-dark); text-transform: uppercase; }
 .nav-links { display: flex; gap: 35px; }
